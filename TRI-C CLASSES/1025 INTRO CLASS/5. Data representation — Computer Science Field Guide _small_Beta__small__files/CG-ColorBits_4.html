@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)http://www.cosc.canterbury.ac.nz/csfieldguide/dev/dev/_static/widgets/DR/DR-color/CG-ColorBits_4.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>jQuery UI Slider - Colorpicker</title>
+	
+
+	<link rel="stylesheet" href="jquery-ui.css">
+	<script src="jquery-1.9.1.js"></script>
+	<script src="jquery-ui.js"></script>
+
+	<!--
+	<link rel="stylesheet" href="css/jquery-ui-1.10.2.custom.min.css" />
+	<script src="script/jquery-1.9.1.js"></script>
+	<script src="script/jquery-ui-1.10.2.custom.min.js"></script>
+	-->
+
+	<style>
+	#progressbar {
+		width: 198px;
+		height:10px;
+	}
+	.progress-label {
+		float: left;
+		margin-left: 40%;
+		margin-top: 0px;
+		font-weight: bold;
+		text-shadow: 1px 1px 0 #fff;
+		font-size: 9px;
+	}
+
+	.mainPanel
+	{
+		background-color: rgb(245, 245, 245);
+		background-image: none;
+		background-position: 50% 50%;
+		background-repeat: repeat-x;
+		border: 1px solid #d3d3d3;
+	}
+
+	.ui-tooltip {
+		padding:8px;
+		position:absolute;
+		z-index:9999;
+		-o-box-shadow: 0 0 5px #aaa;
+		-moz-box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		-webkit-box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		font-size: 12px;
+		
+	}
+
+	.add-shadow {
+		-moz-box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		-webkit-box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+	}
+	
+	.add-embossed {
+		/* Background */
+		background: rgba(0.0, 0, 0, 0.2);
+	 
+		/* Border bottom light */
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	 
+		/* Inner top shadow */
+		-moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+		-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+	 
+		/* Round corners */
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;	
+	}
+	
+	.add-text-embossed
+	{
+		 text-shadow: #fff 0px 1px 0, #000 0 -1px 0;
+	}
+	
+	barslider { float:left; }
+
+	#red8, #green8, #blue8, #red3, #green3, #blue2 {
+		width: 180px;
+		float:left;
+		margin-bottom: 15px;
+	}
+	
+	#red8value, #green8value, #blue8value, #red3value, #green3value, #blue2value {
+		width: 30px;
+		float: left;
+		text-align: center;
+		margin-left: 12px;
+		font-family: Georgia, "Times New Roman", Times, serif;
+		padding: 4px 0 1px 0;
+		font-weight: bold;
+		font-size: 12px;
+		
+	}
+	
+	.windowCompare {
+		width: 294px;
+		height: 378px;
+		float: left;
+		position: relative;
+	}
+	
+	.widthLayout
+	{
+		width:900px;
+	}
+	
+	canvas
+	{
+		position:absolute; 
+		margin-top:0px;
+		left: 50%;
+		margin-left: -125px;
+		margin-top:1px;
+	}
+	
+	.canvasHeading {
+		text-align:center;
+		margin:0;
+		height:20px;
+	}
+	
+	.canvasDiv {
+		float: left;
+		width: 100%;
+		height: 270px;
+	}
+	
+	.panelRGB
+	{
+		float: left;
+		width: 100%;
+		height: 50px;
+		margin-top: 3px;
+		margin-left: 25px;
+	}
+	.panelChannelLabelDiv
+	{
+		height: 50%;
+		text-align: center;
+		line-height: 34px;
+		margin-top: -2px;
+	}
+	
+	.selectListRGB
+	{
+		background: #e6e6e6 url(css/images/ui-bg_gloss-wave_75_cccccc_500x100.png) 50% 50% repeat-x;
+		width: 85px;
+		margin:0px; 
+		height:30px;
+		border-color: gray;
+	}
+	
+	.selectwthLabel
+	{
+		background: #e6e6e6 url(css/images/ui-bg_gloss-wave_75_cccccc_500x100.png) 50% 50% repeat-x;
+		width: 85px;
+		margin:0px; 
+		height:30px;
+		border-color: gray;
+	}
+	
+	.selectFile
+	{
+		background: #e6e6e6 url(css/images/ui-bg_gloss-wave_75_cccccc_500x100.png) 50% 50% repeat-x;
+	}	
+	</style>
+	
+	<script>
+	function hexFromRGB(r, g, b) {
+		r = Math.floor(r);
+		g = Math.floor(g);
+		b = Math.floor(b);
+
+		var hex = [
+			r.toString( 16 ),
+			g.toString( 16 ),
+			b.toString( 16 )
+		];
+	
+		$.each( hex, function( nr, val ) {
+			if ( val.length === 1 ) {
+				hex[ nr ] = "0" + val;
+			}
+		});
+		return "#" + hex.join( "" ).toUpperCase();
+	}
+	</script>
+</head>
+
+<body class="ui-widget-content  ui-dots-medium " style="border: 0;">
+	
+<!--Hidden Canvas -->
+<canvas id="canvas_hidden_24bit" width="260" height="260" style="display: none;" class="add-shadow ui-state-default ui-corner-all"> 
+			Your browser does not support the HTML5 canvas tag.
+</canvas>
+<!-- -->
+	
+<div id="container" class="widthLayout">
+	<div id="header" style="background-color:#FFFFFF;">
+		<h3 class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding: 4px; margin: 2px 0px 2px 0px;">Image Bit Comparer</h3>
+	</div>
+
+	<div class="mainPanel ui-corner-all ui-helper-clearfix">
+		<div class="widthLayout" style="float:left; height:20px; padding: 10px; margin-bottom:14px;">
+			<div style="float:left"> Select Image: </div>
+			<div style="float:left; margin-left: 5px;">	
+				<div>
+				<select id="imageList" class="ui-state-default ui-corner-all ui-helper-clearfix" style="width:200px; height:100%;"><option>Sky</option><option>Color Wheel</option><option>Color Wheel Smooth</option><option>Frog</option><option>Splash</option><option>Face</option><option>Flowers</option><option>Drawing</option><option>Stars</option></select>
+				</div>
+				<div id="progressbar" class="ui-progressbar ui-widget ui-widget-content ui-corner-all ui-progressbar-indeterminate" role="progressbar" aria-valuemin="0" style="display: none;"><div class="progress-label">Loading...</div><div class="ui-progressbar-value ui-widget-header ui-corner-left" style="width: 100%;"><div class="ui-progressbar-overlay"></div></div></div>
+			</div>
+		</div>
+		
+		<div class="windowCompare" ondragover="return false">
+			<div id="canvasHeading1" class="canvasHeading"><h4 style="margin:0;">24-bits "True Color"</h4></div>
+			<div class="canvasDiv">
+				<canvas id="canvas_1" width="260" height="260" class="add-shadow ui-state-default ui-corner-all"> 
+						Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+			<div id="bitpanel1" class="panelRGB"> <div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-left" title="Red" style="border-right-color: rgb(200, 200, 200);"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Red</div></div><div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-none" title="Green" style="border-right-color: rgb(200, 200, 200); border-top-left-radius: 1px;"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Green</div></div><div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-right" title="Blue"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Blue</div></div></div>
+		</div>
+		
+		<div class="windowCompare" ondragover="return false">
+			<div id="canvasHeading2" class="canvasHeading"><h4 style="margin:0;">16-bits "High Color"</h4></div>
+			<div class="canvasDiv">
+				<canvas id="canvas_2" width="260" height="260" class="add-shadow ui-state-default ui-corner-all"> 
+						Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+			<div id="bitpanel2" class="panelRGB">  <div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-left" title="Red" style="border-right-color: rgb(200, 200, 200);"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Red</div></div><div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-none" title="Green" style="border-right-color: rgb(200, 200, 200); border-top-left-radius: 1px;"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Green</div></div><div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-right" title="Blue"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Blue</div></div></div>
+		</div>
+		
+		<div class="windowCompare" ondragover="return false">
+			<div id="canvasHeading3" class="canvasHeading"><h4 style="margin:0;">8-bits</h4></div>
+			<div class="canvasDiv">
+				<canvas id="canvas_3" width="260" height="260" class="add-shadow ui-state-default ui-corner-all"> 
+						Your browser does not support the HTML5 canvas tag.
+				</canvas>
+			</div>
+			<div id="bitpanel3" class="panelRGB"> <div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-left" title="Red" style="border-right-color: rgb(200, 200, 200);"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Red</div></div><div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-none" title="Green" style="border-right-color: rgb(200, 200, 200); border-top-left-radius: 1px;"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Green</div></div><div style="float:left;"><div style="height:50%;"><select class="selectListRGB ui-corner-right" title="Blue"><option value="0">0 bits</option><option value="1">1 bit</option><option value="2">2 bits</option><option value="3">3 bits</option><option value="4">4 bits</option><option value="5">5 bits</option><option value="6">6 bits</option><option value="7">7 bits</option><option value="8">8 bits</option></select></div><div class="panelChannelLabelDiv ui-state-default ui-corner-bottom">Blue</div></div></div>
+		</div>
+		
+	</div>
+	
+	<div id="footer" class="widthLayout" style="background-color:#FFFFFF;clear:both;text-align:center;">
+	<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding: 4px; margin: 2px 0px 2px 0px; ">
+		<span class="ui-icon ui-icon-pencil" style="float: left; margin: -2px 1px 0 0;"></span>
+		This application can accept image files. You can do this by dragging and dropping an image onto any image window above.
+	</p>
+	</div>
+</div>
+
+
+<script>	
+
+	//find_closest_palette_color(oldpixel) 	
+	var b24=document.getElementById("canvas_hidden_24bit");
+	var btx24=b24.getContext("2d");
+	
+	var b1=document.getElementById("canvas_1");
+	var b2=document.getElementById("canvas_2");
+	var b3=document.getElementById("canvas_3");
+	
+	var btx1=b1.getContext("2d");
+		btx1.channelBit = [8,8,8]; //24
+		
+	var btx2=b2.getContext("2d");
+		btx2.channelBit = [5,6,5]; //16
+		
+	var btx3=b3.getContext("2d");
+		btx3.channelBit = [3,3,2]; //8
+
+	function count(array)
+	{
+		var c = 0;
+		for(i in array) // in returns key, not object
+		if(array[i] != undefined)
+			c++;
+		return c;
+	}
+
+	function nbits(n)
+	{
+		return Math.log(n)/Math.log(2)
+	}
+	
+	function shiftBits(image, sR, sG, sB)
+	{			
+		var l1 = 255 / (255 >> sR); //5
+		var l2 = 255 / (255 >> sG); //5
+		var l3 = 255 / (255 >> sB); //6
+
+		for (var i = 0; i < image.data.length; i+=4) {
+				image.data[i] >>= sR; image.data[i] *= l1;
+				image.data[i+1] >>= sG; image.data[i+1] *= l2;
+				image.data[i+2] >>= sB; image.data[i+2] *= l3;
+		}
+		return image;
+	}
+	
+	function countColours(image)
+	{
+		var colorR = [], colorG = [], colorB = [];
+		for (var i = 0; i < image.data.length; i+=4) {
+			
+			var R = image.data[i], G = image.data[i+1], B = image.data[i+2];
+			if(isNaN(colorR[R])) colorR[R] = 0;
+				colorR[R]++;
+			if(isNaN(colorG[G])) colorG[G] = 0;
+				colorG[G]++;
+			if(isNaN(colorB[B])) colorB[B] = 0;
+				colorB[B]++;
+		}
+		console.log(nbits(count(colorR)), nbits(count(colorG)), nbits(count(colorB)));
+	}
+	
+	function hisogramP(image)
+	{
+		var colorR = [], colorG = [], colorB = [];
+		
+		for (var i = 0; i < image.data.length; i+=4) {
+			var R = image.data[i], G = image.data[i+1], B = image.data[i+2];
+			if(isNaN(colorR[R])) colorR[R] = 0;
+				colorR[R]++;
+			if(isNaN(colorG[G])) colorG[G] = 0;
+				colorG[G]++;
+			if(isNaN(colorB[B])) colorB[B] = 0;
+				colorB[B]++;
+		}
+		
+		console.log(colorR);
+	}
+
+	function getBitTypeString(canvas)
+	{
+		var name = null;
+		var red = canvas.channelBit[0];
+		var green = canvas.channelBit[1];
+		var blue = canvas.channelBit[2];
+		var totalbits = red + green + blue;
+		
+		$p = $("<h4 style='margin:0;'>");
+		switch(totalbits)
+		{
+			case 24: $p.text(totalbits + "-bits \"True Color\""); break;//link
+			case 16:
+			{ 
+				if((red == 5) && (green == 6) && (blue == 5))
+				{
+					$p.text(totalbits + "-bits \"High Color\""); 
+				}
+				else $p.text(totalbits + "-bits"); 
+			}
+			break;//link
+			case 1: $p.text("1-bit"); break;
+			default: $p.text(totalbits + "-bits"); break;
+		}
+		return $p;		
+	}
+	
+	function selectBitsPanel(canvas, $headingdiv, $attactdiv)
+	{
+		var channels = ["Red", "Green", "Blue"];
+		for(var channel in channels) 
+		{
+			var $select = $("<select class='selectListRGB'>");
+			$select.attr("title", channels[channel]);
+
+			if(channel < channels.length-1) $select.css("border-right-color", '#c8c8c8');
+
+			//build panel
+			if(channel == 0) $select.addClass('ui-corner-left ');
+			else if(channel == channels.length-1) $select.addClass('ui-corner-right'); 
+			else {
+				$select.addClass('ui-corner-none');
+				$select.css("border-top-left-radius", "1px"); //fixs color strange
+			}
+
+			$select.data("canvas", canvas);
+			$select.data("channel", channel);
+			$select.data("headingdiv", $headingdiv);
+
+			$select.change(function () {
+				var canvas = $(this).data("canvas");
+				var channel = $(this).data("channel");
+				var $headingdiv = $(this).data('headingdiv');
+				
+				$('option:selected', $(this)).each(function () {
+					canvas.channelBit[channel] = parseInt($(this).val());
+				});
+				
+				updateCanvas(canvas);
+				
+				//Heading for bit name
+				$headingdiv.empty();
+				$headingdiv.append(getBitTypeString(canvas));
+			});
+
+			for(var b=0; b<=8;b++)
+			{
+				var $option;
+				if(b == 1) $option = $("<option>").val(b).text(b + " bit" ); //one bit
+					else $option = $("<option>").val(b).text(b + " bits" );
+				$select.append($option);
+				
+				if(canvas.channelBit[channel] == b)
+						$option.prop("selected", true);
+				else $option.prop("selected", false);
+			}
+			
+			//Heading for bit name
+			$headingdiv.empty();
+			$headingdiv.append(getBitTypeString(canvas));
+			
+			var $divSelect = $('<div style="height:50%;">').append($select);
+			var $divLabel = $('<div class="panelChannelLabelDiv">').text(channels[channel])
+				.addClass('ui-state-default').addClass('ui-corner-bottom');
+
+			//attach select bar
+			$attactdiv.append($('<div style="float:left;">').append($divSelect).append($divLabel));
+		}
+		
+	}
+	
+	// load image from data url
+	var imageObj24 = new Image();
+	imageObj24.onload = function() {
+		btx24.drawImage(this, 0,0, b24.width, b24.height);
+		updateAllCanvas();
+	};
+
+	function updateAllCanvas() {
+		updateCanvas(btx1);
+		updateCanvas(btx2);
+		updateCanvas(btx3);
+		$("#progressbar").hide();
+	}
+
+	function updateCanvas(canvas)
+	{
+		canvas.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 
+			8-canvas.channelBit[0], 8-canvas.channelBit[1], 8-canvas.channelBit[2]), 0, 0);
+	}
+
+	imageObj24.src = 'images/sky-small1.jpg';
+	$("#imageList").append($("<option>").text("Sky")
+				.data("file", "images/sky-small1.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Color Wheel")
+				.data("file", "images/colorwheel_BK.png") 
+	);
+
+	$("#imageList").append($("<option>").text("Color Wheel Smooth")
+				.data("file", "images/0.jpg") 
+	);
+
+	$("#imageList").append($("<option>").text("Frog")
+				.data("file", "images/Frog.jpg") 
+	);
+
+	$("#imageList").append($("<option>").text("Splash")
+				.data("file", "images/splash.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Face")
+				.data("file", "images/johnkey.png") 
+	);
+	
+	$("#imageList").append($("<option>").text("Flowers")
+				.data("file", "images/Beautiful Flowers 8.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Drawing")
+				.data("file", "images/black_white_eye.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Stars")
+				.data("file", "images/variable_stars_large.jpg") 
+	);
+	
+	$("#imageList").change( function () {
+		$("#progressbar").show();
+		$('option:selected', $(this)).each(function () {
+			imageObj24.src = $(this).data("file");
+		});
+	});
+	
+	selectBitsPanel(btx1, $('#canvasHeading1'), $('#bitpanel1'));
+	selectBitsPanel(btx2, $('#canvasHeading2'), $('#bitpanel2'));
+	selectBitsPanel(btx3, $('#canvasHeading3'), $('#bitpanel3'));
+
+	$(document).ready(function() {
+		
+		// Makes sure the dataTransfer information is sent when we
+		// Drop the item in the drop box.
+		jQuery.event.props.push('dataTransfer');
+	});
+
+	function loadImage(name, file) {		
+		
+		// Start a new instance of FileReader
+		var fileReader = new FileReader();		
+		fileReader.onload = (function(oFREvent) {
+			//on successful load append to list
+			$("#imageList").append($("<option>").text(file.name)
+				.data("file", oFREvent.target.result).attr('selected', true));
+			$("#progressbar").progressbar( "value", false ).hide(); //upload done 
+			$("#imageList").change(); //update list
+			updateAllCanvas();
+		});
+		
+		fileReader.onprogress = (function(e) {
+			if (event.lengthComputable) {
+				$( "#progressbar" ).progressbar( "option", "max", event.total );
+				$( "#progressbar" ).progressbar( "option", "value", event.loaded);
+			}
+		});
+		
+		fileReader.onloadstart = ( function(e) { $( "#progressbar" ).show(); } );
+		
+		// For data URI purposes
+		fileReader.readAsDataURL(file);
+	}
+
+	$(function() {
+		$( "#progressbar" ).progressbar({ value: false });
+		//$( "#progressbar" ).hide();
+
+		$('#container').bind('drop', function(e) {
+			var file = e.dataTransfer.files[0];
+			var $option = null;
+			var found = false;
+			
+			if (!file.type.match('image.*')) 
+			{
+				alert("Sorry, only images are allowed");
+				return false;
+			}
+			
+			// is this already loaded
+			$("#imageList option").each(function () {
+				if($(this).text() == file.name) {
+					$(this).prop("selected", true);
+					found = true;
+				} 
+			});
+			
+			if(!found) loadImage(file.name, file);
+			
+			$("#imageList").change(); //update list
+			return false;
+		});
+	});
+	
+</script>
+
+
+</body></html>

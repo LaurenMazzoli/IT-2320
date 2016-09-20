@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!-- saved from url=(0101)http://www.cosc.canterbury.ac.nz/csfieldguide/dev/dev/_static/widgets/DR/DR-color/CG-ColorBits_3.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<title>jQuery UI Slider - Colorpicker</title>
+	
+	<link rel="stylesheet" href="jquery-ui.css">
+	<script src="jquery-1.9.1.js"></script>
+	<script src="jquery-ui.js"></script>
+	
+	<!--
+	<link rel="stylesheet" href="css/jquery-ui-1.10.2.custom.min.css" />
+	<script src="script/jquery-1.9.1.js"></script>
+	<script src="script/jquery-ui-1.10.2.custom.min.js"></script>
+	-->
+	<style>
+
+	#progressbar {
+		width: 198px;
+		height:10px;
+	}
+	
+	.progress-label {
+		float: left;
+		margin-left: 40%;
+		margin-top: 0px;
+		font-weight: bold;
+		text-shadow: 1px 1px 0 #fff;
+		font-size: 9px;
+	}
+	
+	.add-shadow {
+		-moz-box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		-webkit-box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+		box-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+	}
+	
+	.add-embossed {
+		/* Background */
+		background: rgba(0.0, 0, 0, 0.2);
+	 
+		/* Border bottom light */
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	 
+		/* Inner top shadow */
+		-moz-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+		-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.5);
+	 
+		/* Round corners */
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;	
+	}
+	
+	.add-text-embossed
+	{
+		 text-shadow: #fff 0px 1px 0, #000 0 -1px 0;
+	}
+	
+	barslider { float:left; }
+
+	#red8, #green8, #blue8, #red3, #green3, #blue2 {
+		width: 180px;
+		float:left;
+		margin-bottom: 15px;
+	}
+	
+	#red8value, #green8value, #blue8value, #red3value, #green3value, #blue2value {
+		width: 30px;
+		float: left;
+		text-align: center;
+		margin-left: 12px;
+		margin-top: -4px;
+		font-family: Georgia, "Times New Roman", Times, serif;
+		padding: 4px 0 1px 0;
+		font-weight: bold;
+		font-size: 12px;
+		
+	}
+	
+	#swatch {
+		width: 130px;
+		height: 130px;
+		margin-top: 18px;
+		margin-left: 250px;
+		background-image: none;
+	}
+	
+	.windowCompare {
+		width:220px;
+		height:250px;
+		float:left; 
+		position:relative;
+	}
+	
+	.widthLayout
+	{
+		width:890px;
+	}
+	
+	
+	canvas
+	{
+		position:absolute; 
+		margin-top:0px; 
+		cursor:crosshair;
+		left: 50%;
+		margin-left: -100px;
+		margin-top:10px;
+	}
+	
+	.canvasDiv {
+		float:left; 
+		width:100%; 
+		height:210px;
+	}
+	
+	.labelCanvas
+	{
+		float:left; 
+		width:100%; 
+		height:20px;
+		text-align: center; 
+		margin-top:5px;
+	}
+	
+	
+	</style>
+	
+	<script>
+
+	function hexFromRGB(r, g, b) {
+		
+		r = Math.floor(r);
+		g = Math.floor(g);
+		b = Math.floor(b);
+
+		var hex = [
+			r.toString( 16 ),
+			g.toString( 16 ),
+			b.toString( 16 )
+		];
+	
+	
+	
+		$.each( hex, function( nr, val ) {
+			if ( val.length === 1 ) {
+				hex[ nr ] = "0" + val;
+			}
+		});
+		return "#" + hex.join( "" ).toUpperCase();
+	}
+	</script>
+</head>
+
+<body class="ui-widget-content  ui-dots-medium " style="border: 0;">
+
+<div id="container" class="widthLayout">
+<div id="header" style="background-color:#FFFFFF;">
+	<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding: 4px; margin: 2px 0px 2px 0px;">
+	<strong> <em>Image Bit Comparer</em> </strong>
+	</p>
+</div>
+
+<div class="ui-state-default ui-corner-all ui-helper-clearfix">
+
+	<div class="widthLayout" style="float:left; height:20px; padding: 10px; margin-bottom: 20px;">
+			<div style="float:left"> Select Image: </div>
+			<div style="float:left; margin-left: 5px;">	
+				<div>
+				<select id="imageList" class="ui-state-default ui-corner-all ui-helper-clearfix" style="width:200px; height:100%;"><option>Splash</option><option>Color Wheel</option><option>Color Wheel Smooth</option><option>Frog</option><option>Sky</option><option>Face</option><option>Flowers</option><option>Drawing</option><option>Stars</option></select>
+				</div>
+				<div id="progressbar" class="ui-progressbar ui-widget ui-widget-content ui-corner-all ui-progressbar-indeterminate" role="progressbar" aria-valuemin="0" style="display: none;"><div class="progress-label">Loading...</div><div class="ui-progressbar-value ui-widget-header ui-corner-left" style="width: 100%;"><div class="ui-progressbar-overlay"></div></div></div>
+			</div>
+	</div>
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="24bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 24 bits "True color"</div>
+	</div>
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="16bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 16 bits "High color" </div>
+	</div>
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="8bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 8 bits (no-index) </div>
+	</div>
+	
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="4bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 4 bits </div>
+	</div>
+	
+	
+		
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="3bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 3 bits </div>
+	</div>
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="2bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 2 bits </div>
+	</div>
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="1bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 1 bit </div>
+
+	</div>
+	
+	<div class="windowCompare">
+		<div class="canvasDiv">
+		<canvas id="0bitcanvas" width="200" height="200" class="add-shadow ui-state-default ui-corner-all"> 
+				Your browser does not support the HTML5 canvas tag.
+		</canvas>
+		</div>
+		<div class="labelCanvas"> 0 bits </div>
+
+	</div>
+</div>
+
+
+</div>
+    
+
+
+<script>	
+	//find_closest_palette_color(oldpixel) 	
+	var b24=document.getElementById("24bitcanvas");
+	var b16=document.getElementById("16bitcanvas");
+	var b8=document.getElementById("8bitcanvas");
+	var b4=document.getElementById("4bitcanvas");
+	var b3=document.getElementById("3bitcanvas")
+	var b2=document.getElementById("2bitcanvas");
+	var b1=document.getElementById("1bitcanvas");
+	var b0=document.getElementById("0bitcanvas");
+		
+	var btx24=b24.getContext("2d");
+	var btx16=b16.getContext("2d");
+	var btx8=b8.getContext("2d");
+	var btx4=b4.getContext("2d");
+	var btx3=b3.getContext("2d");
+	var btx2=b2.getContext("2d");
+	var btx1=b1.getContext("2d");
+	var btx0=b0.getContext("2d");
+	
+	function count(array)
+	{
+		var c = 0;
+		for(i in array) // in returns key, not object
+		if(array[i] != undefined)
+			c++;
+
+		return c;
+	}
+
+	function nbits(n)
+	{
+		return Math.log(n)/Math.log(2)
+	}
+	function shiftBits(image, sR, sG, sB)
+	{			
+		var l1 = 255 / (255 >> sR); //5
+		var l2 = 255 / (255 >> sG); //5
+		var l3 = 255 / (255 >> sB); //6
+
+		for (var i = 0; i < image.data.length; i+=4) {
+				image.data[i] >>= sR; image.data[i] *= l1;
+				image.data[i+1] >>= sG; image.data[i+1] *= l2;
+				image.data[i+2] >>= sB; image.data[i+2] *= l3;
+		}
+		return image;
+	}
+	
+	function countColours(image)
+	{
+		var colorR = [], colorG = [], colorB = [];
+		for (var i = 0; i < image.data.length; i+=4) {
+			
+			var R = image.data[i], G = image.data[i+1], B = image.data[i+2];
+			if(isNaN(colorR[R])) colorR[R] = 0;
+				colorR[R]++;
+			if(isNaN(colorG[G])) colorG[G] = 0;
+				colorG[G]++;
+			if(isNaN(colorB[B])) colorB[B] = 0;
+				colorB[B]++;
+		}
+		console.log(nbits(count(colorR)), nbits(count(colorG)), nbits(count(colorB)));
+	}
+	
+	function hisogramP(image)
+	{
+		var colorR = [], colorG = [], colorB = [];
+		
+		for (var i = 0; i < image.data.length; i+=4) {
+			var R = image.data[i], G = image.data[i+1], B = image.data[i+2];
+			if(isNaN(colorR[R])) colorR[R] = 0;
+				colorR[R]++;
+			if(isNaN(colorG[G])) colorG[G] = 0;
+				colorG[G]++;
+			if(isNaN(colorB[B])) colorB[B] = 0;
+				colorB[B]++;
+		}
+		
+		console.log(colorR);
+		
+	}
+	
+	
+	// load image from data url
+	var imageObj24 = new Image();
+	imageObj24.onload = function() {
+		var centerx= this.width/2, centery = this.height/2;
+
+		//8+8+8 = 24
+		btx24.drawImage(this, b24.width/2 -this.width/2 , b24.height/2 - this.height/2);
+		
+		//5+6+5 = 16
+		btx16.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 3,2,3), 0, 0);
+		
+		//3+3+2 = 8
+		btx8.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 5,5,6), 0, 0);
+		
+		//1+2+1 = 4
+		btx4.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 7,6,7), 0, 0);
+
+		btx3.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 7,7,7), 0, 0);
+
+		//no blue
+		btx2.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 7,7,8), 0, 0);
+		
+		btx1.putImageData(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 8,7,8), 0, 0);	  
+		
+		btx0.fillRect(0, 0, b0.width, b0.height);
+		countColours(shiftBits(btx24.getImageData(0, 0, b24.width, b24.height), 5,5,6));
+		//hisogramP(btx24.getImageData(0, 0, b24.width, b24.height));
+		$( "#progressbar" ).hide();
+	  
+	};
+	imageObj24.src = 'images/splash.jpg';
+	$("#imageList").append($("<option>").text("Splash")
+				.data("file", "images/splash.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Color Wheel")
+				.data("file", "images/colorwheel_BK.png") 
+	);
+
+	$("#imageList").append($("<option>").text("Color Wheel Smooth")
+				.data("file", "images/0.jpg") 
+	);
+
+	$("#imageList").append($("<option>").text("Frog")
+				.data("file", "images/Frog.jpg") 
+	);
+
+	$("#imageList").append($("<option>").text("Sky")
+				.data("file", "images/sky-small1.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Face")
+				.data("file", "images/johnkey.png") 
+	);
+	
+	$("#imageList").append($("<option>").text("Flowers")
+				.data("file", "images/Beautiful Flowers 8.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Drawing")
+				.data("file", "images/black_white_eye.jpg") 
+	);
+	
+	$("#imageList").append($("<option>").text("Stars")
+				.data("file", "images/variable_stars_large.jpg") 
+	);
+
+	$("#imageList").change( function () {
+		$("#progressbar").show();
+		$('option:selected', $(this)).each(function () {
+					imageObj24.src = $(this).data("file");
+			 });
+		
+	});
+	
+	$(function() {
+		$( "#progressbar" ).progressbar({ value: false });
+	});
+</script>
+
+
+
+</body></html>
