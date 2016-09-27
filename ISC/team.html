@@ -16,10 +16,12 @@
  	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>    
 	<script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
  	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/iscScripts.js"></script>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
-		    $('#nav_menu').slicknav({prependTo:"#mobile_menu"});	 
-		    $('#accordion').accordion({
+		    $('.nav_menu').slicknav({prependTo:"#mobile_menu"});	 
+		    $('.accordion').accordion({
 			event: "mouseover",
 			heightStyle: "content",
 			collapsible: true
@@ -28,69 +30,79 @@
 	</script>
 </head>
 
+
 <body>
-  <header>
-	<div id="header_icon">
-<!--    twitter button code -->
-		<a name="tin1kla" href="http://www.twitter-buttons.biz" title="buttons for twitter"><img src="http://www.twitter-buttons.biz/buttons/new/023.png" alt="buttons for twitter" border="0"/></a><script type="text/javascript">t="@isc_boys";x=document.getElementsByName('tin1kla');y=new Array(104,116,116,112,58,47,47,116,119,105,116,116,101,114,46,99,111,109,47);z='';for(i in y){z+=String.fromCharCode(y[i]);}for(i in x){x[i].href=z+t;}</script>
+
+  <header class="background_image">
+
+        <div class="header_img"> 
+ 	   <a href="index.html"><img src="images/internationals.jpg" alt="internationals.jpg" width="85"></a>
+        </div>
+
+	<div class="header_text">
+   		<h2>Cleveland Internationals</h2>
+		<h3>U.S.Soccer <span class="team_color">Development Academy</span></h3>
+		<h4><em>Where College Coaches look first!</em></h4>
 	</div>
-<!-- add buttons for fb page, youtube channel here-->
-<!-- add search bar here -->
-<!-- isc page header content -->
-  	<a href="index.html">
-	   <img src="images/internationals.jpg" alt="internationals.jpg" width="85"></a>
-   	<h2>Cleveland Internationals</h2>
-	<h3>U.S.Soccer <span class="blue">Development Academy</span></h3>
-	<h4><em>Where College Coaches look first!</em></h4>
 
-  </header>
+	<div class="header_icon">
+	  <a href="http://twitter.com/@isc_boys"></a>
+	</div>
+</header>
 
-  <nav id="mobile_menu"></nav>
-  <nav id="nav_menu">
+
+  <nav class="mobile_menu"></nav>
+
+  <nav class="nav_menu">
   	<ul> 
    	     <li><a href="#" class="item current">Teams</a>
-    	          <ul>
+    	          <ul class="team_nav">
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655544" target="_blank">U-12</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655565" target="_blank">U-13</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655566" target="_blank">U-14</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655545" target="_blank">U-15/16</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655567" target="_blank">U-17/18</a></li>
     	          </ul>
-   	     <li><a href="events.html" class="item">Events</a></li>
-    	     <li><a href="resources.html" class="item">Resources</a></li>
-    	     <li><a href="http://www.ussoccerda.com/overview" class="item" target="_blank">Overview</a></li>
-   	     <li><a href="recruits.html"  class="item">Recruits</a></l1>
-     	     <li><a href="about_us.html"  class="lastitem">About Us</a></li>
+   	     <li><a href="events.html">Events</a></li>
+    	     <li><a href="resources.html">Resources</a></li>
+    	     <li><a href="http://www.ussoccerda.com/overview"target="_blank">Overview</a></li>
+   	     <li><a href="recruits.html">Recruits</a></l1>
+     	     <li class="lastitem"><a href="about_us.html">About Us</a></li>
 	</ul>
   </nav>
-  <main>
-       <aside>
-	     <nav id="nav_list">
+
+  <div class="main_panel">
+
+       <div class="nav_list_with_image">
+	     <nav class="nav_list">
    	         <ul>
    		    <li><a href="#players" class="current">Players</a></li>
    		    <li><a href="recruits.html">Recruiting</a></li>  					 
 		    <li><a href="join_us.html">Join Us</a></li>
    		    <li><a href="sponsors.html">Sponsors</a></li>
    		    <li><a href="donors.html">Donors</a></li>
-  		    <li><a href="documents/CornerKickGolf_Flyer_2016_FINAL.pdf" target="_blank">Fundraisers</a></li>
+  		    <li><a href="#">Fundraisers</a></li>
 	         </ul>
 	     </nav>
-	     <img src="images/DA_logo3.png" alt="USSDA logo"</img>
-	</aside>
-<!-- MAIN SECTION -->
-	<section> 
-		<div id="left_bar">
-		    <h1>DA Teams</h1>
-		    <div id="accordion">
+	     <div class="nav_list_image">
+	  	   <img src="images/DA_logo3.png" alt="USSDA logo"</img> 
+             </div>
+
+	</div> <!-- end nav_list_with_image -->
+
+	<div class = "right_panel"> 
+		<h1>Internationals DA Teams</h1>
+		<div class="main_content">
+		    <div class="accordion">
 		        <h3 id="rosters">Roster/Schedule</h3>
-			<div id="roster_content">
+			<div class="roster_content">
 			    <table>
 				<thead>
-		        <tr>
-				    <th>Team Roster</th>
-				    <th>Nbr Players</th>
-				    <th>Coach</th>
-				</tr>
+		       		   <tr>
+				      <th>Team Roster</th>
+				      <th>Nbr Players</th>
+				      <th>Coach</th>
+				   </tr>
 				</thead>
 				<tbody>
 				    <tr> <!-- U12 Row -->
@@ -127,64 +139,65 @@
 			    </table>
 			</div> <!-- end roster_content -->
 
-		        <h3 id="practices">Practice Schedule</h3>
-			<div id="practice_content">
-				<a href="http://interinfoacademy.blogspot.com/2015/08/practice-schedule.html" target="_blank">Practice Information</a>
+		        <h3 class="practices">Team Blog"</h3>
+			<div class="practice_content">
+				<a href="http://interinfoacademy.blogspot.com/2015/08/practice-schedule.html" target="_blank">Practice Schedules</a>
+			</div>	<!-- end practice_content -->
+			<div class="Trip_content">
+				<a href="http://interinfoacademy.blogspot.com/2015/08/trip-itineraries.html" target="_blank">Trip Itinerary</a>
 			</div>	<!-- end practice_content -->	      
-			<h3 id="games">Games</h3>
-			<div id="game_content">
+	      
+			<h3 class="games">Games</h3>
+			<div class="game_content">
 				<a href = "http://www.ussoccerda.com/sam/standings/regevent/index.php?containerId=MTYyNzU4NQ%3D%3D&partialGames=1" target="_blank">Schedule & Standings</a>
 				<p><a href = "https://www.youtube.com/channel/UCaLP80EL3QJWoVwHQd9W9cA" target="_blank">Game Videos</a></p>
-
 			</div> <!-- end game_content -->
 		    </div> <!-- end accordian -->
-		    <div id="left_bar_bottom">
+
+		    <div class="link_panel">
 			<h3>Related Links</h3>
 		       	<ul>
 			   <li><a href="http://intr.ussoccerda.com/home.php" target="_blank">ISC USDA Page</a></li>
 			   <li><a href = "http://www.internationalssoccer.com/boys/isccollegeplayers" target="_blank">ISC Current College Players</a></li>
 			</ul>
-		    </div> <!-- end left_bar_bottom -->
-	        </div> <!-- end left_bar -->
-		<div id="right_bar">
+		    </div> <!-- end link_panel -->
+
+		</div> <! -- end main_content -->
+
+		<div class = "sell_it_panel">
 		      <figure>	
 			   <img src="images/teampic.jpg" alt="ISC Team Pic">	
 			   <figcaption>
 				<h2>Coaching, Competition, Training, Tradition</h2>
 			   </figcaption>
 		      </figure>
- 		      <div id="right_bar_logo">	
-	                <a href="http://pumaelite.com" target="_blank">
-                           <img src="images/puma.png" alt="puma logo" class="puma_logo"></a>	
-		      </div>
-		</div> <!-- end right_bar -->
-	</section>
-	<div id="sponsor_panel">
+
+ 		      <div class="sell_it_logo_normal"></div>
+		</div> <!-- end sell_it_panel -->
+
+	</div> <!-- end right panel-->
+
+	<div class="sponsor_panel">
 		<div class="arsenal_puma_logo">
 	        <a href="http://arsenal.com" target="_blank">
                    <img src="images/arsenal_logo2.jpg" alt="arsenal_puma_logo"></a>
 		</div>	
+
 		<div class = "us_soccer_logo">
 	        <a href="http://ussoccer.com" target="_blank">
                    <img src="images/us-soccer-logo.png" alt="us_soccer_logo"></a>
 		</div>
+
 		<div class="puma_elite_logo">	
 	        <a href="http://www.pumaelite.com/Default.aspx?tabid=901756" target="_blank">
                    <img src="images/pumaelite.jpg" alt="puma_elite_logo"></a>
 		</div>
 	</div>		
-  </main>
+  </div> <!-- main_panel -->
 
-  <footer>
-     <p>
-     <script>
-	var today = new Date();
-	document.write("&copy;&nbsp;");
-	document.write(today.getFullYear());
-	document.write(", Lauren Mazzoli")
-	document.write(" - unofficial Website developed for educational use")
-     </script>
-     </p>
+  <footer class="footer_panel">
+     <p class="footer_content"></p>
   </footer>
+
 </body>
 </html>
