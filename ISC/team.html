@@ -3,96 +3,90 @@
 <!-- LAUREN MAZZOLI SEPT 2016 --> 
 <html lang="en">
 <head>
-	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8" name="viewport" 
+	      content="width=device-width, initial-scale=1">
 	<title>ISC US Soccer DA Teams</title>
+
 	<link rel="shortcut icon" href="images/favicon.ico"> 
+
+<!-- style sheets -->
 	<link href="styles/normalize.css" rel="stylesheet">
 	<link href="styles/main.css" rel="stylesheet">
 	<link href="styles/subpage.css" rel="stylesheet">
 	<link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet">
-
  	<link href="styles/slicknav.css" rel="stylesheet">
+	<link href="styles/jquery.bxslider.css" rel="stylesheet"> 
 
- 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>    
+<!- javascript -->
+  	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>    
 	<script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
  	<script src="js/jquery.slicknav.min.js"></script>
+ 	<script src="js/jquery.bxslider.min.js"></script>
 	<script src="js/iscScripts.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-		    $('.nav_menu').slicknav({prependTo:"#mobile_menu"});	 
-		    $('.accordion').accordion({
-			event: "mouseover",
-			heightStyle: "content",
-			collapsible: true
-                    });
-	});
-	</script>
 </head>
-
-
 <body>
 
   <header class="background_image">
 
-        <div class="header_img"> 
- 	   <a href="index.html"><img src="images/internationals.jpg" alt="internationals.jpg" width="85"></a>
-        </div>
+        <div class="header_img"></div>
 
 	<div class="header_text">
    		<h2>Cleveland Internationals</h2>
-		<h3>U.S.Soccer <span class="team_color">Development Academy</span></h3>
+		<h3>U.S.Soccer <span class="team_color">
+		    Development Academy</span></h3>
 		<h4><em>Where College Coaches look first!</em></h4>
 	</div>
 
-	<div class="header_icon">
-	  <a href="http://twitter.com/@isc_boys"></a>
-	</div>
+	<div class="header_icon"></div>
 </header>
 
 
   <nav class="mobile_menu"></nav>
 
   <nav class="nav_menu">
-  	<ul> 
-   	     <li><a href="#" class="item current">Teams</a>
-    	          <ul class="team_nav">
-    			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655544" target="_blank">U-12</a></li>
-    			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655565" target="_blank">U-13</a></li>
-    			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655566" target="_blank">U-14</a></li>
-    			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655545" target="_blank">U-15/16</a></li>
-    			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655567" target="_blank">U-17/18</a></li>
-    	          </ul>
-   	     <li><a href="events.html">Events</a></li>
-    	     <li><a href="resources.html">Resources</a></li>
-    	     <li><a href="http://www.ussoccerda.com/overview"target="_blank">Overview</a></li>
-   	     <li><a href="recruits.html">Recruits</a></l1>
-     	     <li class="lastitem"><a href="about_us.html">About Us</a></li>
+      <ul>
+	  <li><a href="#" class="current">Teams</a>
+    	      <ul class="team_nav">    		
+		  <li><a href = "http://intr.ussoccerda.com/sam/teams/index.phpteam=1655544" 
+		       target="_blank">U-12</a></li>
+    		  <li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655565"
+			target="_blank">U-13</a></li>
+    		  <li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655566"
+		  	target="_blank">U-14</a></li>
+    		  <li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655545"
+			target="_blank">U-15/16</a></li>
+    		  <li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655567"
+			target="_blank">U-17/18</a></li>
+    	      </ul>
+          </li>
+   	  <li><a href="events.html">Events</a></li>
+    	  <li><a href="resources.html">Resources</a></li>
+    	  <li><a href="http://www.ussoccerda.com/overview"target="_blank">Overview</a></li>
+   	  <li><a href="recruits.html">Recruits</a></li>
+     	  <li class="lastitem"><a href="about_us.html">About Us</a></li>
 	</ul>
   </nav>
 
   <div class="main_panel">
-
-       <div class="nav_list_with_image">
+      <div class="nav_list_with_image">
 	     <nav class="nav_list">
    	         <ul>
    		    <li><a href="#players" class="current">Players</a></li>
-   		    <li><a href="recruits.html">Recruiting</a></li>  					 
-		    <li><a href="join_us.html">Join Us</a></li>
+   		    <li><a href="recruits.html">Recruiting</a></li>  					    <li><a href="join_us.html">Join Us</a></li>
    		    <li><a href="sponsors.html">Sponsors</a></li>
    		    <li><a href="donors.html">Donors</a></li>
   		    <li><a href="#">Fundraisers</a></li>
 	         </ul>
 	     </nav>
-	     <div class="nav_list_image">
-	  	   <img src="images/DA_logo3.png" alt="USSDA logo"</img> 
-             </div>
+
+	     <div class="nav_list_image"></div>
 
 	</div> <!-- end nav_list_with_image -->
 
 	<div class = "right_panel"> 
 		<h1>Internationals DA Teams</h1>
 		<div class="main_content">
+
 		    <div class="accordion">
 		        <h3 id="rosters">Roster/Schedule</h3>
 			<div class="roster_content">
@@ -137,15 +131,14 @@
 			            <td></td>
 				</tfoot>
 			    </table>
+
 			</div> <!-- end roster_content -->
 
-		        <h3 class="practices">Team Blog"</h3>
-			<div class="practice_content">
+		        <h3 class="teamBlog">Team Blog</h3>
+			<div class="blog_content">
 				<a href="http://interinfoacademy.blogspot.com/2015/08/practice-schedule.html" target="_blank">Practice Schedules</a>
-			</div>	<!-- end practice_content -->
-			<div class="Trip_content">
-				<a href="http://interinfoacademy.blogspot.com/2015/08/trip-itineraries.html" target="_blank">Trip Itinerary</a>
-			</div>	<!-- end practice_content -->	      
+				<p><a href="http://interinfoacademy.blogspot.com/2015/08/trip-itineraries.html" target="_blank">Trip Itinerary</a></p>
+			</div>	<!-- end blog_content -->	      
 	      
 			<h3 class="games">Games</h3>
 			<div class="game_content">
@@ -173,26 +166,27 @@
 		      </figure>
 
  		      <div class="sell_it_logo_normal"></div>
+
 		</div> <!-- end sell_it_panel -->
 
 	</div> <!-- end right panel-->
 
-	<div class="sponsor_panel">
-		<div class="arsenal_puma_logo">
-	        <a href="http://arsenal.com" target="_blank">
-                   <img src="images/arsenal_logo2.jpg" alt="arsenal_puma_logo"></a>
+        <div class="sponsor_panel">
+
+		<div class="sponsor_logo arsenal_puma_logo">
+	             <a href="http://arsenal.com" target="_blank"></a>
 		</div>	
 
-		<div class = "us_soccer_logo">
-	        <a href="http://ussoccer.com" target="_blank">
-                   <img src="images/us-soccer-logo.png" alt="us_soccer_logo"></a>
+		<div class="sponsor_logo puma_elite_logo">	
+	             <a href="http://www.pumaelite.com/Default.aspx?tabid=901756"
+			 target="_blank"></a>
 		</div>
 
-		<div class="puma_elite_logo">	
-	        <a href="http://www.pumaelite.com/Default.aspx?tabid=901756" target="_blank">
-                   <img src="images/pumaelite.jpg" alt="puma_elite_logo"></a>
+		<div class = "sponsor_logo us_soccer_logo">
+	             <a href="http://ussoccer.com" target="_blank"></a>
 		</div>
-	</div>		
+
+        </div> <!-- end sponsor_panel -->		
   </div> <!-- main_panel -->
 
   <footer class="footer_panel">

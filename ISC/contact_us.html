@@ -5,159 +5,161 @@
 <head>
 	<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 	<title>ISC US Soccer DA Contact Us</title>
-	<link rel="shortcut icon" href="images/favicon.ico"> 
+
+<!-- style sheets -->
 	<link href="styles/normalize.css" rel="stylesheet">
 	<link href="styles/main.css" rel="stylesheet">
 	<link href="styles/subpage.css" rel="stylesheet">
 	<link href="jquery-ui-1.11.4/jquery-ui.min.css" rel="stylesheet">
-
  	<link href="styles/slicknav.css" rel="stylesheet">
+	<link href="styles/jquery.bxslider.css" rel="stylesheet"> 
 
- 	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>    
+<!- javascript -->
+  	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>    
 	<script src="jquery-ui-1.11.4/jquery-ui.min.js"></script>
  	<script src="js/jquery.slicknav.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-		    $('#nav_menu').slicknav({prependTo:"#mobile_menu"});
-	});
-	</script>		
+ 	<script src="js/jquery.bxslider.min.js"></script>
+	<script src="js/iscScripts.js"></script>
 </head>
 
 <body>
-  <header>
-<!-- icons for fb, twitter, youtube -->
-	<div id="header_icon">
-		<a name="tin1kla" href="http://www.twitter-buttons.biz" title="buttons for twitter"><img src="http://www.twitter-buttons.biz/buttons/new/023.png" alt="buttons for twitter" border="0"/></a><script type="text/javascript">t="@isc_boys";x=document.getElementsByName('tin1kla');y=new Array(104,116,116,112,58,47,47,116,119,105,116,116,101,114,46,99,111,109,47);z='';for(i in y){z+=String.fromCharCode(y[i]);}for(i in x){x[i].href=z+t;}</script>
+  <header class="background_image">
+
+        <div class="header_img"></div>
+
+	<div class="header_text">
+   		<h2>Cleveland Internationals</h2>
+		<h3>U.S.Soccer <span class="team_color">
+		    Development Academy</span></h3>
+		<h4><em>Where College Coaches look first!</em></h4>
 	</div>
+
+	<div class="header_icon"></div>
+</header>
+
+  <nav class="mobile_menu"></nav>
+
+  <nav class="nav_menu">
  
-  	<a href="index.html">
-	   <img src="images/internationals.jpg" alt="internationals.jpg" width="85"></a>
-   	<h2>Cleveland Internationals</h2>
-	<h3>U.S. Soccer Development Academy</h3>
-	<h4><em>Where College Coaches look first!</em></h4>
-
-<!-- add search bar -->
-  </header>
-
-  <nav id="mobile_menu"></nav>
-  <nav id="nav_menu">
   	<ul> 
-   	     <li><a href="team.html" class="item">Teams</a>
-    	          <ul>
+   	     <li><a href="team.html">Teams</a>
+   	      <ul class="team_nav">    		
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655544">U-12</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655565">U-13</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655566">U-14</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655545">U-15/16</a></li>
     			<li><a href="http://intr.ussoccerda.com/sam/teams/index.php?team=1655567">U-17/18</a></li>
     	          </ul>
-   	     <li><a href="events.html" class="item">Events</a></li>
-    	     <li><a href="resources.html" class="item">Resources</a></li>
-    	     <li><a href="http://www.ussoccerda.com/overview"  class="item">Overview</a></li>
-   	     <li><a href="recruits.html"  class="item">Recruits</a></l1>
-     	     <li><a href="about_us.html"  class="lastitem current" target="_blank">About Us</a></li>
+	     </li>
+   	     <li><a href="events.html">Events</a></li>
+    	     <li><a href="resources.html">Resources</a></li>
+    	     <li><a href="http://www.ussoccerda.com/overview">Overview</a></li>
+   	     <li><a href="recruits.html">Recruits</a></l1>
+     	     <li class = "lastitem"><a href="about_us.html" class="current" target="_blank">About Us</a></li>
 	</ul>
   </nav>
 
-  <main>
-       <aside>
-	     <nav id="nav_list">
-   	     <ul>
+   <div class="main_panel">
+      <div class="nav_list_with_image">
+	     <nav class="nav_list">
+  	     <ul>
    		 <li><a href="team.html#players">Players</a></li>
-   		 <li><a href="recruits.html">Recruiting</a></li>  					 
+   		 <li><a href="recruits.html">Recruiting</a></li>  			 
 		 <li><a href="join_us.html">Join Us</a></li>
    		 <li><a href="sponsors.html">Sponsors</a></li>
-   		 <li><a href="donors.html">Donors</a></li>
-  		 <li><a href="documents/CornerKickGolf_Flyer_2016_FINAL.pdf">Fundraisers</a></li>
+   		 <li class=<a href="donors.html">Donors</a></li>
+  		 <li><a href="#">Fundraisers</a></li>
 	     </ul>
 	     </nav>
-	     <img src="images/DA_logo3.png" alt="USSDA logo"</img>
-	</aside>
-<!-- MAIN SECTION -->
-	<section> 
-	     <div id="left_bar"><!--** CONTACT US PAGE CONTENT ** -->
-		    <h1>Contact Us</h1>
-   		    <form action="email_form.html" method="get"
-        		name="email_form" id="email_form">
-    			<fieldset>
-	        		<legend>Your Information</legend>
-	        		<label for="email">E-Mail:</label>
-	        		<input type="email" name="email" id="email" autofocus required><br>
-	        		<label for="first_name">First Name:</label>
-				<input type="text" name="first_name" id="first_name" required><br>
-				<label for="last_name">Last Name:</label>
-				<input type="text" name="last_name" id="last_name" required><br>
-				<label for="phone">Phone:</label>
-				<input type="tel" name="phone" id="phone" placeholder="999-999-9999" 
-				       	   pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Must be 999-999-999 format"><br>
-			</fieldset>
+	     <div class = "nav_list_image"></div>
 
-			<fieldset>
-				<legend>Area of Interest</legend>
-				<label for="interest">Interest:</label>
-					<select name="interest" id="interest" size=4>
-				    	<option selected value="prospect">Prospective Player</option>            
-				    	<option value="recruiting">Recruiting</option>
-				    	<option value="sponsorship">Sponsorship</option>
-				    	<option value="donation">Donations</option>
-				    	<option value="fundraising">Fundraising</option>
-				    	<option value="other">Other</option>
-				</select>
-			</fieldset>
-			<fieldset>
-				<legend>Comments:</legend>
-				<br>
-				<textarea name="comments"
-					placeholder="If you have any comments, please enter them here."></textarea>					
-			</fieldset>
+	</div> <!-- end nav_list_with_image -->
 
-			<fieldset id="buttons">
-				<legend>Submit Request</legend>
-				<label>&nbsp;</label>
-				<input type="submit" id="submit" value="Submit">
-				<input type="reset" id="reset" value="Reset Fields"><br>
-			</fieldset>
-		    </form>
-	        </div> <!-- end left_bar -->
-		<div id="right_bar">
-		      <figure>	
-			   <img src="images/teampic.jpg" alt="ISC Team Pic">	
-			   <figcaption>
-				<h2>Coaching, Competition, Training, Tradition</h2>
-			   </figcaption>
-		      </figure>
- 		      <div id="right_bar_logo">	
-	                 <a href="http://pumaelite.com" target="_blank">
-                         <img src="images/puma.png" alt="puma elite logo" class="puma_logo"></a>	
-		      </div>
-		</div> <!-- end right_bar -->
-	  </section>
-	  <div id="sponsor_panel">
-		<div class="arsenal_puma_logo">
-	        <a href="http://arsenal.com" target="_blank">
-                   <img src="images/arsenal_logo2.jpg" alt="arsenal_puma_logo"></a>
-		</div>	
-		<div class = "us_soccer_logo">
-	        <a href="http://ussoccer.com" target="_blank">
-                   <img src="images/us-soccer-logo.png" alt="us soccer_logo"></a>
-		</div>
-		<div class="puma_elite_logo">	
-	        <a href="http://www.pumaelite.com/Default.aspx?tabid=901756" target="_blank">
-                   <img src="images/pumaelite.jpg" alt="puma_elite_logo"></a>
-		</div>
-	</div>		
-        </section>
-  </main>
+	<div class = "right_panel"> 
+	    <h1>Contact Us</h1>
+	    <div class = "main_content">
+   	        <form action="email_form.html" method="get"
+        	      name="email_form" id="email_form">
+    		    <fieldset>
+	        	<legend>Your Information</legend>
+	        	<label for="email">E-Mail:</label>
+	        	<input type="email" name="email" id="email" autofocus required><br>
+	        	<label for="first_name">First Name:</label>
+			<input type="text" name="first_name" id="first_name" required><br>
+			<label for="last_name">Last Name:</label>
+			<input type="text" name="last_name" id="last_name" required><br>
+			<label for="phone">Phone:</label>
+			<input type="tel" name="phone" id="phone" placeholder="999-999-9999" 
+			       pattern="\d{3}[\-]\d{3}[\-]\d{4}" title="Must be 999-999-999 format"><br>
+		    </fieldset>
 
-  <footer>
-     <p>
-     <script>
-	var today = new Date();
-	document.write("&copy;&nbsp;");
-	document.write(today.getFullYear());
-	document.write(", Lauren Mazzoli")
-	document.write(" - unofficial Website developed for personal use")
-     </script>
-     </p>
+		    <fieldset>
+			<legend>Area of Interest</legend>
+			<label for="interest">Interest:</label>
+			    <select name="interest" id="interest" size=4>
+				    <option selected value="prospect">Prospective Player</option>            
+				    <option value="recruiting">Recruiting</option>
+				    <option value="sponsorship">Sponsorship</option>
+				    <option value="donation">Donations</option>
+				    <option value="fundraising">Fundraising</option>
+				    <option value="other">Other</option>
+			    </select>
+		    </fieldset>
+		    <fieldset>
+			<legend>Comments:</legend>
+			<br>
+			<textarea name="comments"
+				placeholder="If you have any comments, please enter them here."></textarea>					
+		    </fieldset>
+
+		    <fieldset id="buttons">
+			<legend>Submit Request</legend>
+			<label>&nbsp;</label>
+			<input type="submit" id="submit" value="Submit">
+			<input type="reset" id="reset" value="Reset Fields"><br>
+		    </fieldset>
+		</form>
+
+		<div class="link_panel"></div> <!-- end link_panel -->
+
+	    </div> <!-- end main_content -->
+
+	    <div class = "sell_it_panel">
+	        <figure>	
+		    <img src="images/teampic.jpg" alt="ISC Team Pic">	
+		    <figcaption>
+			 <h2>Coaching, Competition, Training, Tradition</h2>
+		    </figcaption>
+		</figure>
+
+ 		<div class="sell_it_logo_normal"></div>
+
+	    </div> <!-- end sell_it_panel -->
+
+	</div> <!-- end right panel -->
+
+	<div class = "sponsor_panel">
+ 
+	   <div class="sponsor_logo arsenal_puma_logo">
+	          <a href="http://arsenal.com" target="_blank"></a>
+	   </div>	
+
+	   <div class="sponsor_logo puma_elite_logo">	
+	          <a href="http://www.pumaelite.com/Default.aspx?tabid=901756"
+			 target="_blank"></a>
+	   </div>
+
+	   <div class = "sponsor_logo us_soccer_logo">
+	          <a href="http://ussoccer.com" target="_blank"></a>
+ 	   </div>
+
+        </div> <!-- end sponsor_panel -->
+	
+  </div> <!-- end main_panel -->		
+
+  <footer class="footer_panel">
+     <p class="footer_content"></p>
   </footer>
+ 
 </body>
 </html>

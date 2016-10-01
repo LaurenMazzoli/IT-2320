@@ -50,12 +50,19 @@ header {
 	background-size: 32px 32px;
 	background-position: center;
 	background-repeat: no-repeat;
+	cursor: pointer;
 }
 .header_img { 
 	display: inline-block;
 	position: relative;
-	left: 0;       
+	left: 0;
 	top: 0;  
+	height: 80px;
+	width: 80px;       
+	background-image: url("..//images/internationals.jpg");
+	background-size: 80px 80px;
+	background-repeat: no-repeat;	
+	cursor:pointer;
 } 
 .header_text { display: inline-block;
 	       margin-left: 20px;
@@ -81,10 +88,10 @@ header h4 { color: white; }
 }
 .nav_menu ul li {
         display: inline-block;
-	width: 16%;
+	width: 16.25%;
 }
-.nav_menu ul li a.lastItem {
-	width: 17%;
+.nav_menu ul .lastitem {
+	width: 16.6%;
 }
 .nav_menu ul li a {
 	text-align: center;
@@ -134,7 +141,7 @@ header h4 { color: white; }
         display: inline-block;
 	width: 81%;
         vertical-align: top;
-	padding-bottom: 1%;
+	padding-bottom: 2%;
 }
 /* -- SubPanel Page Content -- */
 .main_content { 
@@ -196,9 +203,20 @@ header h4 { color: white; }
 }
 
 .nav_list_image {
-    display: block;
-    width: 50%;
-    padding-left: 15%;
+
+//    display: block;
+//    width: 50%;
+//    padding-left: 15%;
+
+	display: inline-block;
+	position: relative;
+	left: 15%;
+	top: 0;  
+	height: 200px;
+	width: 50%;       
+	background-image: url("..//images/DA_logo3.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;	
 }  
 .nav_list_image img {
      width: 100%;
@@ -241,6 +259,7 @@ figure img { width: 96%;
 
 .right_panel h1 { 
 	font-size: 200%;
+	margin-bottom: 0;
 }
 /* h2 displayed in slider box */
 .main_content h2 {
@@ -252,7 +271,7 @@ figure img { width: 96%;
 }
 .bxslider { list-style: none; }
 
-.bxslider img {width:400px;}
+.bxslider img {width:500px;}
 
 
 .main_content a:link, main_content a:visited { 
@@ -273,14 +292,29 @@ p {padding-top: 1em;
 .logo_normal {border: 2px solid red;}
 .logo_highlight {border: 2px solid blue;}
 
-.puma_elite_logo, .arsenal_puma_logo, .us_soccer_logo { 
-	display: inline-block;
-	width: 30%; 
-	height: 10%;
-	vertical-align: middle; 
-	text-align: center;	
+.sponsor_logo
+{
+    margin: auto; 
+    display: inline-block;
+    width: 30%; 
+    height: 90%;
+    vertical-align: middle; 
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.puma_elite_logo img {padding-top: 10%;}
+.puma_elite_logo {     
+     background-image: url("..//images/pumaelite.jpg");
+     background-size: 150px 75px;
+}
+.arsenal_puma_logo {     
+     background-image: url("..//images/arsenal_logo2.jpg");
+     background-size: 191px 110px;
+} 
+.us_soccer_logo {     
+     background-image: url("..//images/us-soccer-logo.png");
+     background-size: 100px 124px;
+} 
+/* .puma_elite_logo img {padding-top: 10%;} */
 
 /* Footer */
 .footer_panel { 
@@ -349,4 +383,8 @@ footer {
 /* ---  MOBILE PORTRAIT 479 OR LESS --- */
 @media only screen and (max-width: 479px) {
 	body { font-size: 90%; } 
+/* ---- for contactUsForm ----- */
+
+.contactUsForm @import "register.css";
+.contactUsForm dt {font-weight: bold;}
 }
