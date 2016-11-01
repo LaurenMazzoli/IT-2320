@@ -1,0 +1,160 @@
+/*    Lab  4 - The Halloween Store 10 Products    */
+
+
+/* ========= ELEMENT STYLES ============= */
+html { 
+	background: url("../images/bats.gif");
+	background-repeat: repeat; 
+}
+body {
+	width: 750px;
+	margin: 0 auto;
+	padding: 0;
+	margin-left: 20px; /* offset from left to see border */ 
+	border: 3px solid black;
+	box-shadow: 0px 3px 10px 5px black; 
+	background: white;	 	
+   	font-family: Verdana, ARial, Helvetica, sans-serif;
+    	font-size: 100%;
+}
+h1, h2, h3, p {
+	margin: 0;
+	padding: 0
+}
+
+/* ============ HEADER STYLES ============= */
+header {
+	border-bottom: 2px solid black;
+	padding: 15px;
+	background-image: -webkit-linear-gradient(45deg, white 0%, orange 75%, black 100% );  
+	background-image: -moz-linear-gradient(45deg, white 0%, orange 75%, black 100% ); 		background-image: -o-linear-gradient(45deg, white 0%, orange 75%, black 100% );  
+	background-image: linear-gradient(45deg, white 0%, orange 75%, black 100% );  
+}
+header img { float: left; 
+	     padding-right: 15px;	
+}
+
+header h2 { 
+	font-size: 230%;
+}
+header h3 { 
+	font-size: 125%;
+	padding-bottom: 15px;
+}
+
+/* ==============  NAV OPERATION STYLES ============ */
+
+#nav_menu { clear: left;
+}
+
+#nav_menu ul {
+ 	list-style: none;	/* removes bullets */
+	position: relative;	/* for submenu positioning */
+}
+#nav_menu ul li {
+	float: left;		/* displays horizontally */
+}
+
+#nav_menu ul ul {
+	display: none;		/* hides the sub menu when not hovering on parent li element */
+	postition: absolute;	/* relative to parent li element */
+	top: 100%;		/* underneath the parent li element */ 
+}
+#nav_menu ul ul li {
+	float: none;		/* displays vertically */
+}	
+#nav_menu ul li:hover > ul {
+	display: block;		/* displays sub menu when hover on parent li element */
+}
+
+#nav_menu > ul::after {
+	content: "";
+	display: block;
+	clear: both; 
+}
+/* ============== NAV FORMATTING STYLES ================ */
+
+#nav_menu ul {
+	margin: 0;
+	padding: 0;
+}
+
+#nav_menu ul li a {
+	display: block;		/* shows menu items as buttons */
+	text-decoration: none;	/* removes underline */
+	text-align: center;
+	width: 150px;
+	padding: 1em 0;
+	background-color: black;
+	color: white;
+}
+#nav_menu ul li a.current { color: darkorange; }
+#nav_menu ul li a:hover, #nav_menu ul li a:focus { background-color: gray; }
+
+/* =========== SIDEBAR STYLES ============= */
+aside { width: 160px; 
+	padding: 20px 0;
+	float: left;
+}
+#nav_list ul {
+	list-style: none;
+	padding-left: 1.5em;
+}
+#nav_list ul li { 
+	width: 110px;
+	margin-bottom: .5em; 
+	border: 2px solid black;
+}
+#nav_list ul li a {
+	display: block;
+	padding: .5em 0 .5em .5em;
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+	background-color: darkorange;
+} 
+ 
+/* ========= SECTION STYLES ============= */
+section {
+	 width: 530px;
+	 float: right; 
+	padding: 20px 40px 20px 20px;
+}
+section h1 {
+	font-size: 140%;
+	margin-bottom: .5em;
+}
+
+figcaption { text-align: center; 
+}
+td, th { text-align: left;	 
+	 padding: .35em .5em;
+}
+thead th { color: dimgray; }
+th.right { text-align: right; } /* price col */
+th:first-child { vertical-align: top; } /* for category headers*/
+td:first-child { padding-right: 5em; } /* make description column wider */
+td:last-child { 
+	display: block;              
+	background-color: #F5DEB3;
+	text-align: right;
+}
+
+/* ========== FOOTER STYLES ============= */	
+footer {
+	clear: both;
+	background-image: -webkit-linear-gradient(
+		45deg, black 0%, orange 25%, white 100% );  
+	background-image: -moz-linear-gradient(
+		45deg, black 0%, orange 25%, white 100% );  
+	background-image: -o-linear-gradient(
+		45deg, black 0%, orange 25%, white 100% );  
+	background-image: linear-gradient(
+		45deg, black 0%, orange 25%, white 100% );  
+}
+footer p { 
+	font-size: 70%; 
+	text-align: center; 
+	border-top: 2px solid black; 
+	padding: 1em;
+}

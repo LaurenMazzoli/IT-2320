@@ -1,0 +1,273 @@
+/* ISC USDA Website */
+/* LAUREN MAZZOLI SEPT 2016 */
+
+* { margin: 0;
+    padding: 0;
+}
+
+html {
+	background-color: white; }
+
+body  {
+	font-family: sans-serif, Verdana, Arial, Helvetica;
+	font-size: 100%;
+	width: 99%;  /* change 800px to 99% */
+	max-width: 1060px; 
+	background: white;
+	margin: 0 auto; 
+	border: 3px solid black;
+	box-shadow: 0 .5em 1em .5em; 
+}
+
+/* ---- Header ----- */
+header { 
+    padding: 1.5em 0 1.5em;
+    background-image: -webkit-linear-gradient(45deg, red 0%, white 50%, blue 100%);
+    background-image: -moz-linear-gradient(45deg, red 0%, white 50%, blue 100%);
+    background-image: -o-linear-gradient(45deg, red 0%, white 50%, blue 100%);
+    background-image: linear-gradient(45deg, red 0%, white 50%, blue 100%);
+} 
+
+header a img { 
+	float: left;
+	padding: 0 3.75%;  
+} 
+header h2 {
+	font-size: 230%;
+}
+header h3 {
+	font-size: 150%;
+	padding-bottom: .5em%;
+}
+header h4 {
+	color: white;
+}
+
+#header_icon {
+	      float:right;
+	      margin-right: 2%;
+}
+
+/* ---- Navigation Menu -----*/
+
+#nav_menu {
+	clear: left;
+}
+#nav_menu ul {
+	width: 100%; 
+	list-style: none;
+	position: relative;
+}
+
+#nav_menu ul li .item {
+	float: left;
+	width: 16.6%;
+}
+#nav_menu ul .lastitem {
+	float:left;
+	width: 17%;
+}
+
+#nav_menu > ul::after {
+	content: "";
+	display: block;
+	clear: both; 
+}
+#nav_menu ul ul {
+	display: none;
+	position: absolute;
+	top: 100%;
+}
+#nav_menu ul ul li {
+	float: none; /* Displays vertically */
+	width: 100%;
+}
+#nav_menu ul li a {
+	text-align: center;
+	display: block;
+	padding: .7em 0;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+}
+#nav_menu ul li:hover > ul {
+	width: 16.6%;  
+	display: block;
+}
+#nav_menu ul li .current {
+	color: red;
+}
+#nav_menu ul li a:hover, #nav_menu ul li a:focus {
+	background-color: gray;
+}
+/* ----- Page Structure ----- */
+
+/* -- Side Bar Panel -- */
+section { background-color: silver; 
+	  padding-bottom: 10px;
+}
+
+aside {
+	float: left; 
+	width: 15%;
+	padding: 3% 0 5% 1%;
+}
+/* -- Section Panel -- */
+#main_panel {
+	width: 82.5%;
+	float: left;
+	padding-left: 1.5%;
+	padding-bottom: 3%;
+}
+/* -- Section SubPanels -- */
+#left_bar { width:58%; 
+	    float: left;
+	    margin-top: 2%;
+	    padding: 1%;
+	    background-color: white;	   
+}
+#right_bar { width: 38%;
+	     float: right; 
+} 
+
+/* -- Bottom Panel -- */
+#sponsor_panel {clear: both;
+		margin: 6%;
+		border: 5px double blue;
+		border-radius: 10px;
+		background-color: black;
+		text-align: center;
+		padding: 2%;
+		color: white;
+}
+
+/* ------ Side Bar Styles ------ */
+#nav_list ul {
+	margin-left: 1%; 
+	list-style: none;
+	padding-left: 2%;
+	padding-top: 2%;
+	padding-bottom: 35%;
+
+}
+#nav_list ul li { 
+	margin-bottom: .5em;
+	border: 2px solid black; 
+	width: 82%;
+}
+
+#nav_list ul li a {
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: blue;
+	padding: .5em 0 .5em 5%;
+	color: white;
+}
+#nav_list ul li a:hover, #nav_list ul li a:focus 
+#nav_list ul li .current { background-color: gray; }
+aside img { width: 90%; } /* puma */
+                   
+/* ------- Section Styles ------- */
+figure { background: white;
+	 padding: 1%; 
+	 margin: 5%;}
+
+figure img { width: 96%; 
+	     padding: 2%;} 
+
+#right_bar figcaption { display: block;
+			padding: 20px;
+}
+#right_bar_logo {
+		padding: 10% 20% 50px;
+}
+#right_bar_logo img { width: 100%; }
+
+#left_bar h1 { 
+	font-size: 180%;
+	margin-bottom: .5em;
+	float:none;
+}
+#left_bar h2 {
+	font-size: 200%;
+}
+#left_bar h3 {
+	font-size: 110%;
+	margin: .8em 0 .5em 0;
+}
+
+#left_bar a:link, main a:visited { 
+    color: red; 
+}
+#left_bar a:hover, main a:focus { 
+    color: blue;
+}
+#left_bar_bottom ul { padding-left: 4%; 
+		      padding-bottom: 2%;
+}
+#left_bar_bottom ul li a {
+	padding-bottom: 1%;
+}
+p {padding-top: 1em;}
+
+/* Footer */
+footer { 
+	clear: both;
+	border-top: 2px solid black;
+	padding: 2%;
+        background-image: -webkit-linear-gradient(45deg, blue  0%, white 25%, red 100%);
+        background-image: -moz-linear-gradient(45deg, blue 0%, white 25%, red 100%);
+        background-image: -o-linear-gradient(45deg, blue 0%, white 25%, red 100%);
+        background-image: linear-gradient(45deg, blue 0%, white 25%, red 100%);
+} 
+footer p {
+	font-size: 90%;
+}
+
+/* ---------- RWD STYLES --------- */
+
+#mobile_menu { display: none; }	/* hide mobile menu */		
+
+/* --- TABLET PORTRAIT 768 to 959 ---- */
+@media only screen and (max-width: 959px) {
+	section h1 { font-size: 135%; }
+	section h2, aside h2 { font-size: 120%; }
+} 
+/* --- MOBILE LANDSCAPE TO 480 to 767 --- */
+@media only screen and (max-width: 767px) {
+
+	#nav_menu { display: none; }		/* hide nav_menu */
+	#mobile_menu { display: block; }	/* display mobile menu */
+	.slicknav_menu { background-color: gray !important; }	
+	header a img { float: none;
+			padding-bottom: 2%; }
+	header { text-align:center; }
+	section, aside { float: none; padding: 0 2.5%; width: 95%; }
+
+	aside img { max-width: 30%; 
+	            padding-left: 20%;
+	           }
+	section img { max-width: 30%; }
+	#left_bar { padding-left: 20%; }
+	#right_bar { display: none; }
+	#main_panel {float: none;
+	             text-align: center;
+        }
+	/* #aside div { 
+	    -moz-column-count: 2; 
+	    -webkit-column-count: 2;
+	    column-count: 2;
+	} */
+
+	#sponsor_panel { display: none; }
+	footer { float: none; }
+
+}
+/* ---  MOBILE PORTRAIT 479 OR LESS --- */
+@media only screen and (max-width: 479px) {
+	body { font-size: 90%; } 
+
+}
+}

@@ -1,0 +1,421 @@
+/* ISC USDA Website */
+/* LAUREN MAZZOLI nov 2016 */
+
+/*   reset selector */
+* { margin: 0;
+    padding: 0;
+}
+
+html {
+	background-color: white; }
+
+body  { 
+        position: relative;
+	width: 95%;
+	background: white;
+	margin: 0 auto;  /* center the page in browser*/
+	padding: 0;
+	border: 3px solid black;
+	box-shadow: 0 .5em 1em .5em; 
+	font-family: sans-serif, Verdana, Arial, Helvetica;
+	font-size: 100%;
+}
+p {padding-top: 1em;}
+
+/* ---- Header ----- */
+header { 
+    position: relative;
+    padding: 10px;
+    margin: 0;
+} 
+.clearfix {
+    overflow: auto;
+}
+
+.background_image {
+    background-image: -webkit-linear-gradient(45deg, red 0%, white 50%, blue 100%);
+    background-image: -moz-linear-gradient(45deg, red 0%, white 50%, blue 100%);
+    background-image: -o-linear-gradient(45deg, red 0%, white 50%, blue 100%);
+    background-image: linear-gradient(45deg, red 0%, white 50%, blue 100%);
+}
+
+.header_icon {
+	display: inline-block;
+	position: absolute; /* positioned wrt header */
+	bottom: 1em;
+	right: 1em;
+	width: 32px;
+	height: 32px;
+	border: 1px solid white;
+	background: url(".//images/twitter_logo.jpg") 50px center no-repeat;
+	background-image: url("../images/twitter_logo.jpg");
+	background-size: 32px 32px;
+	background-position: center;
+	background-repeat: no-repeat;
+	cursor: pointer;
+}
+.header_img { 
+	display: inline-block;
+	position: relative;
+	left: 0;
+	top: 0;  
+	height: 80px;
+	width: 80px;       
+	background-image: url("..//images/internationals.jpg");
+	background-size: 80px 80px;
+	background-repeat: no-repeat;	
+	cursor: pointer;
+} 
+
+.header_text { display: inline-block;
+	       margin-left: 20px;
+}
+header h2 { font-size: 230%; }
+header h3 { font-size: 150%; }
+header h4 { color: white; }
+
+.team_color {color: blue;}
+
+/* ---- Navigation Menu -----*/
+
+.nav_menu { background-color: black; }
+.nav_menu ul  {
+        padding: 0; 
+	list-style: none;
+        position: relative;
+}
+.nav_menu > ul::after {    /* adds empty content to end of first ul */
+	content: "";       /* displays it as a block */
+	display: block;    /* needed for two-tier nav */
+}
+.nav_menu ul li {
+        display: inline-block;
+	width: 16%;
+	text-align: center;
+	padding: .5em 0;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+}
+.nav_menu ul .lastitem {
+	width: 16.5%;
+}
+.nav_menu ul li a {
+	text-align: center;
+	display: block; 
+	padding: .5em 0;
+	text-decoration: none;
+	font-weight: bold;
+	background-color: black;
+	color: white;
+}
+.nav_menu ul ul {
+	display: none;
+        position: absolute;
+	top: 100%;
+        width: 100%
+}
+.nav_menu ul ul li { display: block; } 
+
+.nav_menu ul li:hover > ul
+{
+	display: block;
+}
+.nav_menu ul li .current {
+	color: red;
+}
+.nav_menu ul li a:hover, #nav_menu ul li a:focus {
+	background-color: gray;
+}
+
+/* ----- Page Structure ----- */
+.main_panel { 
+       margin: 0;
+       padding-bottom: 1%;
+       padding-left: 2%; 
+       background-color: silver;	
+}
+.nav_list_with_image {
+        display: inline-block;
+        vertical-align: top;
+	width: 18%;
+	padding-top: 2%;
+        padding-bottom: 0;         
+}
+/* -- Content -- */
+.right_panel {
+	margin: 0;
+        display: inline-block;
+	width: 81%;
+        vertical-align: top;
+	padding-bottom: 2%;
+}
+/* -- SubPanel Page Content -- */
+.main_content { 
+	margin-top: 1em;
+	vertical-align: top;
+	display: inline-block;
+	width:56%;
+	padding: 2%;
+	background-color: white;	   
+}
+
+/* -- SubPanel Images -- */
+.sell_it_panel { 
+	margin: 0;
+	display: inline-block;
+	vertical-align: top;
+	width: 38%;
+} 
+
+/* -- Bottom Panel -- */
+.sponsor_panel {
+	margin: 0 auto; 
+	margin-bottom: .5em;
+	border: 1em double blue;
+	border-radius: 10px;
+	background-color: black;
+	height: 130px;
+        width: 90%;
+	vertical-align: middle;
+	text-align: center;
+	padding: 1%;
+	color: white;
+}
+/* ------ Side Bar Nav Styles ------ */
+.nav_list ul {
+	list-style: none;
+        padding-bottom: 3%;
+}
+
+.nav_list ul li { 
+	margin-bottom: .5em;
+	border: 2px solid black; 
+	width: 85%;
+}
+.nav_list ul li a {
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	background-color: blue;
+	padding: .5em 0 .5em 5%;
+	color: white;
+	font-size: 1em;
+}
+.nav_list ul li a:hover, .nav_list ul li a:focus, 
+.nav_list ul li .current { 
+	background-color: gray; 
+}
+
+.nav_list ul li .current {
+	background: red; 
+}
+
+.nav_list_image {
+	display: inline-block;
+	position: relative;
+	left: 15%;
+	top: 0;  
+	height: 200px;
+	width: 50%;       
+	background-image: url("..//images/DA_logo3.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;	
+}  
+.nav_list_image img {
+     width: 100%;
+}                 
+/* ------- Main Section Styles ------- */
+figure { background: white;
+	 padding: 1%; 
+	 margin: 5%;
+}
+figure img { width: 96%; 
+	     padding: 2%;
+} 
+.sell_it_panel figcaption { display: block;
+			padding: 20px;
+}
+
+.sell_it_logo_normal {
+		position: relative;
+		margin: auto;
+		height: 81px;
+		width: 158px;
+		background-color: white;
+	        background-repeat: no-repeat;
+	 	background-size: 158px 81px;
+		background-image: url('../images/puma.png');
+		border: 2px solid red;
+}
+
+.sell_it_logo_highlight {
+		position: relative;
+		margin: auto;
+		height: 81px;
+		width: 158px;
+		background-color: black;
+	        background-repeat: no-repeat;
+	 	background-size: 158px 81px;
+		background-image: url('../images/puma.png');
+		border: 2px solid blue;
+}
+
+.right_panel h1 { 
+	font-size: 200%;
+	margin-bottom: 0;
+}
+.main_content h2 {
+	font-size: 180%;
+}
+.main_content h3 {
+	font-size: 140%;
+	margin: .8em 0 .5em 0;
+}
+.bxslider { list-style: none; }
+
+.bxslider img {width:500px;}
+
+
+.main_content a:link, main_content a:visited { 
+    color: red; 
+}
+.main_content a:hover, main_content a:focus { 
+    color: blue;
+}
+.link_panel ul { padding-left: 4%; 
+		      padding-bottom: 2%;
+}
+.link_panel ul li a {
+	padding-bottom: 1%;
+} 
+
+.logo_normal { border: 2px solid red; }
+.logo_highlight { border: 2px solid blue; }
+
+.sponsor_logo
+{
+    margin: auto; 
+    display: inline-block;
+    width: 30%; 
+    height: 90%;
+    vertical-align: middle; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.puma_elite_logo {     
+     background-image: url("..//images/pumaelite.jpg");
+     background-size: 150px 75px;
+}
+.arsenal_puma_logo {     
+     background-image: url("..//images/arsenal_logo2.jpg");
+     background-size: 191px 110px;
+} 
+.us_soccer_logo {     
+     background-image: url("..//images/us-soccer-logo.png");
+     background-size: 100px 124px;
+} 
+/* .puma_elite_logo img { padding-top: 10%; } */
+
+/* Footer */
+.footer_panel { 
+	border-top: 2px solid black;
+        background-image: -webkit-linear-gradient(45deg, blue  0%, white 25%, red 100%);
+        background-image: -moz-linear-gradient(45deg, blue 0%, white 25%, red 100%);
+        background-image: -o-linear-gradient(45deg, blue 0%, white 25%, red 100%);
+        background-image: linear-gradient(45deg, blue 0%, white 25%, red 100%);
+	padding: 0 2% 2% 2%;
+} 
+.footer_panel p {
+	font-size: 95%;
+}
+
+/* ---------- RWD STYLES --------- */
+
+.mobile_menu { display: none; }	/* hide mobile menu */		
+
+/* --- TABLET PORTRAIT 768 to 959 ---- */
+@media only screen and (max-width: 959px) {
+	right_panel h1 { font-size: 160%;}
+	.main_content h2 { font-size: 130%; }
+	.nav_list_with_image .nav_list ul li a { font-size: .8em; }
+} 
+/* --- MOBILE LANDSCAPE TO 480 to 767 --- */
+@media only screen and (max-width: 767px) {
+	body    { border: 1px solid black;
+		  box-shadow: 0; 
+        }
+	header { padding: 1%; } 
+	header .header_img { 
+		padding-right: 0;
+		padding-bottom: 2%; 
+	}
+
+	header .header_text { margin: 2px; }
+	header .header_icon { display: none; }
+	header h2 { font-size: 180%; }
+	header h3 { font-size: 130%; }
+	header h4 { color: black; }
+
+	.nav_menu { display: none; }            /* hide nav_menu */
+	.mobile_menu { display: block; }	/* display mobile menu */
+	.slicknav_menu { background-color: gray !important; }	
+
+	.nav_list_with_image { 
+		width: 93%;  
+	        float: none;
+		margin: auto; 
+	        padding-top: 20px; 
+	      }
+	.nav_list ul { padding-bottom: 5%;}
+	.nav_list ul li a { font-size: 1.5em; }
+	.nav_list ul li { width: 80%; margin:auto; } 
+
+	.nav_list_image { 
+		left: 0; 
+		display: block;
+		width: 20%;
+		margin: auto; 
+	}
+
+	.right_panel { 
+                display: block; 
+	        margin: 5%; 
+		width: 90%;
+         }
+	.right_panel h1 { display: block;
+			  padding-bottom: 5px; 
+		     	  text-align: center; } 
+	 .main_content { 
+		display: block; 
+		margin: auto; 
+		width: 85%; 
+         }
+	
+ 	.main_content .std_p2 { display: none; }
+
+        .right_panel .sell_it_panel { display: none; }
+	.sponsor_panel { display: none; }
+footer {} 
+
+/* ---  MOBILE PORTRAIT 479 OR LESS --- */
+@media only screen and (max-width: 479px) {
+	header .header_img { 
+		display: block; 
+		padding-bottom: 2%; 
+		margin: auto; 
+	}
+	header .header_text { display: block; text-align:center; }
+	header h2, header h3, header h4 { text-align: center; }
+	.nav_list_image { height: 100px; }
+	body { font-size: 90%; }
+	h1 { font-size: 75%; }
+/*	.bxslider {display: none; } */
+
+} 
+
+/* ---- for contactUsForm ----- */
+.contactUsForm @import "register.css";
+.contactUsForm dt {font-weight: bold;}
+}
