@@ -1,68 +1,123 @@
-﻿var Main = {};
-
-Main.Account = function(name, currentGpa)
-{
+﻿//var Main = {};
+//Main.Account = function(name, currentGpa)
+//{
     //build this object from json?
-    this.Name = name;
-    this.CurrentGPA = currentGpa);
-}
+//    this.Name = name;
+//    this.CurrentGPA = currentGpa);
+//}
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
-function buildAccountBox1()
+function BuildAccountBox1()
 {
-       
-}
-function buildAccountBox2()
-{
-// stub
-}
-function buildLoginBox()
-{
+    // *** stub ***       
+    // change this to use same code as login and pass textString and boxname='account' or 'login'
+    var contentBox2 = $(".contentBox2");
     
-    var contentBox1 = document.getElementsByClassName("contentBox1")[0];
+    var textString="New users, please create a new acccount by ";
+    textString += "providing us with some basic information.";
 
-    alert("contentBox: "+contentBox1);
-    var loginText="Already have an account with us? blah blah blah..."
-    new column = createDiv(loginText, "loginBox1");
-    contentBox1.appendChild(column);
-    column = createDiv("box2","loginBox2");
-    contentBox1.appendChild(column);
-    // add 3 rows to this new div and an event handler for login button
+    createDiv(contentBox2, textString, "accountBox1");//create account box 1 and populate contents
+    createDiv(contentBox2,"","accountBox2");//create account box 2
+    populateAccountBox2();
+}
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+function populateAccountBox2()
+{
+    // *** stub ***
+    // duplicate code from login function here
+    //
+}
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+
+function buildLoginBox()
+{   
+    var contentBox1 = $(".contentBox1");
+    
+    var textString="Already have an account with us?";
+    textString += "Returning users may log in by entering their site username and password.";
+
+    createDiv(contentBox1, textString, "loginBox1");
+    createDiv(contentBox1, "", "loginBox2");
+    populateLoginBox2();
+}
+
+function populateLoginBox2()
+{
+  var loginBox2 = $(".loginBox2");
+
+  createRow(loginBox2,"Username", 0);
+  createRow(loginBox2,"Password", 1);
+  createRow(loginBox2,"", 2);
+}
+
+function createRow(parent, rowType, i)
+{
+
+    createDiv(parent, "", "row");
+    var row = $('.row');
+    createDiv($(row[i]),rowType, "col1");
+    createDiv($(row[i]), "", "col2");
+    var col2 = $('.col2');
+
+    if (rowType == "")
+    {
+        createButton("loginButton", $(col2[i]));
+    }
+    else
+    {
+        createTextbox(rowType, $(col2[i]));
+    }
+}
+
+function createTextbox(fieldName, parent)
+{
+    $('<input/>').attr({
+        type: "Text",
+        class: "textbox",
+        name: fieldName
+    }).appendTo(parent);
+}
+function createButton(className, parent)
+{
+    var button = $('<button/>').attr({
+        type: "button",
+        class: className
+    }).appendTo(parent);
+    button.text("Log In");
 }
 function buildCreateAccountBox()
 { 
         // copy code from build login box and add event handler for button
 } 
- ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
-  
-function CreateDiv(text, className)
+///////////////////////////////////////////////////////////////
+
+function createDiv(parent, textString, className)
 {
-
-    var newDiv = document.createElement("div");
-    
-    newDiv.className = className;
-
-    newDiv.innerHTML = text;
-
-    return newDiv;
-
+    var element = $("<div></div").text(textString).addClass(className);
+    parent.append(element);
 }
 
 $(document).ready(function()
 {
-    // ?check to see if logged in somehow. if logged in then call build account else build login
+
+// this will only be executed once. Build the login screen here. 
 
     buildLoginBox();
     buildCreateAccountBox();
-    $(".loginButton").click(function()
-    {
-        //login button event handler will call service
-    });
 
-    $(".createAccountButton").click(function()
-    {
-        // create account event handler will call service
-    });
-}
-}
+//   $(".loginButton").click(function()
+//   {
+//       //login button event handler will call service to validate and read account
+//   });
+//
+//    $(".createAccountButton").click(function()
+//    {
+//        //will call service to validate and create account 
+//   });
+//
 });

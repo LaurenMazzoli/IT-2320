@@ -1,22 +1,23 @@
-﻿ .home  {
+﻿.home  {
            font-family: Calibri;
            font-size: 12px;
            font-weight: normal;
            width: 520px;       
 }
- .home header h1 { 
+.home header h1 { 
            font-family: Cambria;
            font-size: 16px;
            font-weight: bold;
            text-align: left;
 }
+
 .home header .stdParagraph { 
            font-weight: normal;
            font-style: italic;
            font-family: Calibri;
            font-size: 12px;
            text-align: left;
-           margin: 20px 10px;
+           margin: 20px 2%;
 }
 
 .home main {
@@ -30,26 +31,53 @@
 .home footer { 
         font-size: 90%;
 }
+
 .home main .contentBox1 {
             border: 1px solid black;
-            padding: 15px 20px;
-            margin: 10px;
 }
+
 .home main .separator {
-           border-bottom: 5px solid lightblue;
+           border-bottom: 2px solid lightblue;
            width: 95%;
-           padding: 20px 0;
+           padding: 5px;
            height: 0;
-           margin: 10px;
+           margin: 5px;
 }    
-.home main .contentBox2 {
-            padding: 30px 10px;
-}
 .home main .contentBox1 .loginBox1 {
     display: inline-block;
+    vertical-align: top;
+    text-align:left;
     width: 40%;
+    padding-top: 20px;
+    padding-left: 4%;
 }
 .home main .contentBox1 .loginBox2 {
     display: inline-block;
-    width: 50%;
+    padding: 10px 0px;
+    width: 53%;
+    text-align:left;
+}
+.home main .contentBox1 .loginBox2 .row {   
+    padding: 0 0 5px 8%;
+   
+}
+.home main .contentBox1 .loginBox2 .row .col1 {
+    width: 25%;
+    display: inline-block;
+}
+.home main .contentBox1 .loginBox2 .row .col2 {
+    display: inline-block; 
+    width: 75%;
+    padding: 0;
+    text-align:right;
+}
+.home main .contentBox1 .loginBox2 .row .col2 .textbox {
+    display: inline-block; 
+    background-color: #73AD21;
+} 
+.home main .contentBox1 .loginBox2 .row .col2 button {
+    border-radius: 15px;
+    background-color: gray;
+    color: black;
+    padding: 2px 20%;
 }
