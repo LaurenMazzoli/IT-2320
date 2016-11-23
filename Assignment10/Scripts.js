@@ -3,32 +3,28 @@ var Main = {};
 Main.Canvas = document.getElementById('myCanvas');
 Main.Context = Main.Canvas.getContext('2d');
 
-Main.MouseDown = false;
+Main.MousePressed = false;
 Main.MX = 0;
 Main.MY = 0;
 
+Main.MouseUp = function (mouseEvent) {
+    Main.MousePressed = false;
+}
+Main.MouseDown = function(mouseEvent) {
+    Main.MousePressed = true;
+}
 Main.Canvas.onmousemove = function (event) {
-
-    if (event.offsetX) {
+    if (event.offsetX)
+    {
         mouseX = event.offsetX;
-
         mouseY = event.offsetY;
-
     }
-
     else if (event.layerX) {
-
         mouseX = event.layerX;
-
         mouseY = event.layerY;
-
     }
-
-
     Main.MX = mouseX;
-
     Main.MY = mouseY;
-
 }
 
 Main.picImage = new Array();
@@ -49,12 +45,15 @@ Main.picImage[6].src = "images/Gabby7.jpg";
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
-Main.Box = function(x, y, w, h)
+Main.Box = function(x, y, w, h, img)
 {
 	this.X = x;
 	this.Y = y;
 	this.Width = w;
 	this.Height = h;
+	this.Pic = new Image();
+	this.Pic.src = img;
+
     ///////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 	this.IsSelected = function () {
@@ -66,62 +65,76 @@ Main.Box = function(x, y, w, h)
 	    var insideBoxHeight = Main.MY > this.Y && Main.MY < boxY2;
 	    return insideBoxWidth && insideBoxHeight;
 	}
+	
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
-	this.DrawAsImage = function(image)
+	this.DrawAsImage = function()
 	{
-		Main.Context.drawImage(image, this.X, this.Y, this.Width, this.Height);
+		Main.Context.drawImage(this.Pic, this.X, this.Y, this.Width, this.Height);
 	}
 }
 
 Main.Boxes = [
-	new Main.Box(20,  100, 150, 250),
-	new Main.Box(180, 100, 150, 250),
-	new Main.Box(350, 100, 150, 250),
-
-    new Main.Box(520, 70, 180, 300),
-
-    new Main.Box(720, 100, 150, 250),
-    new Main.Box(890, 100, 150, 250),
-    new Main.Box(1060, 100, 150, 250)
+	new Main.Box(20,   100, 150, 250,"images/Gabby1.jpg"),
+	new Main.Box(180,  100, 150, 250,"images/Gabby2.jpg"),
+	new Main.Box(350,  100, 150, 250,"images/Gabby3.jpg"),
+    new Main.Box(520,   70, 180, 300,"images/Gabby4.jpg"),
+    new Main.Box(720,  100, 150, 250,"images/Gabby5.jpg"),
+    new Main.Box(890,  100, 150, 250,"images/Gabby6.jpg"),
+    new Main.Box(1060, 100, 150, 250,"images/Gabby7.jpg")
 ];
 ////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
 Main.Animate = function()
 {
+    // clear canvas
 	Main.Context.clearRect(0, 0, Main.Canvas.width, Main.Canvas.height);
 
-    /// main code ///
-	for (var i=0; i<Main.Boxes.length; i++)
-	    Main.Boxes[i].DrawAsImage(Main.picImage[i]);
+    // create gradient
+	var gradient=Main.Context.createLinearGradient(0,0,Main.Canvas.width,0);
+	gradient.addColorStop(0,"pink");
+	gradient.addColorStop(1,"white");
 
-	for (var i=0; i<Main.Boxes.length; i++)
-        {
-	    if (Main.Boxes[i].IsSelected() && Main.MX < Main.Canvas.x)
-	        Main.shiftImagesLeft(Main.Boxes);
-	    if (Main.Boxes[i].IsSelected() && Main.MX > Main.Canvas.x)
-	        Main.shiftImagesRight();
-	    }
+    // draw gradient background
+	Main.Context.fillStyle=gradient;
+	Main.Context.fillRect(0,0,Main.Canvas.width,Main.Canvas.height);
+
+    // add header
+	Main.Context.fillStyle = "black";
+	Main.Context.font = "30px Arial";
+	Main.Context.fillText("Gabby's Senior Pics 2017", Main.Canvas.width/3, 50);
+
+    // check if img selected and if moved left or right from selection
+	var x2 = 0;
+	for (var i=0; i < Main.Boxes.length; i++)
+	{	 
+   	    x2 = Main.Boxes[i].x + Main.Boxes[i].Width;
+   	    if (Main.Boxes[i].IsSelected() && (Main.MX < Main.Boxes[i].x)) 
+   	        Main.ShiftImagesLeft();
+   	    else if (Main.Boxes[i].IsSelected() && (Main.MX > x2))    
+   	        Main.ShiftImagesRight();   	   
+   	    Main.Boxes[i].DrawAsImage(Main.Boxes[i].Pic);
+	}
 	requestAnimFrame(function() { Main.Animate(); });
 }
-	Main.shiftImagesLeft = function(boxes)
-	{
-	    var temp = new Image();
-	    temp.src = boxes[0];
-	    for (var i = 1; i < boxes.length; i++)
-	        boxes[i-1].src = boxes[i].src;
-	    boxes[boxes.length] = temp.src;
-	}
-	Main.shiftImagesRight = function (boxes) {
-	    var temp = new Image();
-	    temp.src = boxes[boxes.length];
-	    for (var i = 0; i < boxes.length-1; i++)
-	        boxes[i + 1].src = boxes[i].src;
-	    boxes[boxes.length] = temp.src;
-	}
-
+Main.ShiftImagesLeft=function()
+{
+    alert("in shift left");
+    var tempPic = Main.Boxes[0].Pic;
+        for (var i = 0; i< Main.Boxes.length-1; i++)
+            Main.Boxes[i].Pic = Main.Boxes[i+1].Pic;
+        Main.Boxes[Main.Boxes.length-1].Pic = tempPic;
+}
+Main.ShiftImagesRight = function()
+{
+        alert('in shift right');
+        var tempPic = Main.Boxes[Main.Boxes.length-1].Pic;
+        for (var i = Main.Boxes.length-2; i > 0; i--)
+            Main.Boxes[i+1].Pic = Main.Boxes[i].Pic;
+        Main.Boxes[0].Pic = tempPic;
+}
 window.requestAnimFrame = (function(callback)
 {
 	return window.requestAnimationFrame
@@ -135,6 +148,6 @@ window.requestAnimFrame = (function(callback)
 $(document).ready(function()
 {
     Main.Animate();
-    $(Main.Canvas).mouseenter(function (mouseEvent) { Main.MouseEnter(mouseEvent); });
-    $(Main.Canvas).mouseleave(function (mouseEvent) { Main.MouseLeave(mouseEvent); });
+    Main.Canvas.addEventListener('mouseup',  function (mouseEvent) { Main.MouseUp(mouseEvent); });
+    Main.Canvas.addEventListener('mousedown', function (mouseEvent) { Main.MouseDown(mouseEvent); });
 });
