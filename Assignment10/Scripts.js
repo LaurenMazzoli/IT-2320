@@ -7,18 +7,23 @@ Main.MousePressed = false;
 Main.CarouselIsSelected = false;
 Main.MX = 0;
 Main.MY = 0;
+Main.SelectedMX = 0;
 
 Main.MouseUp = function (mouseEvent) {
     Main.MousePressed = false;
     Main.CarouselIsSelected = false;
+    Main.SelectedMX = 0;
 }
 Main.MouseDown = function(mouseEvent) {
 //    check to see if the click is inside a box. 
     Main.MousePressed = true;
     for (var i = 0; i < Main.Boxes.length; i++)
     {
-        if (Main.Boxes[i].IsSelected) 
+        if (Main.Boxes[i].IsSelected)
+        {
             Main.CarouselIsSelected = true;
+            Main.SelectedMX = Main.MX;
+        }
     }
 }
 Main.Canvas.onmousemove = function (event) {
@@ -33,6 +38,10 @@ Main.Canvas.onmousemove = function (event) {
     }
     Main.MX = mouseX;
     Main.MY = mouseY;
+    if (Main.CarouselIsSelected && Main.MX < Main.SelectedMX) 
+        Main.ShiftImagesLeft();
+    else if (Main.CarouselIsSelected && Main.MX > Main.SelectedMX) 
+        Main.ShiftImagesRight(); 
 }
 
 Main.picImage = new Array();
@@ -73,19 +82,13 @@ Main.Box = function(x, y, w, h, img)
 	    var insideBoxHeight = Main.MY > this.Y && Main.MY < boxY2;
 	    return insideBoxWidth && insideBoxHeight;
 	}
-    ////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////
-	this.IsMovingLeft = function () {
-	    var boxX2 = this.X + this.Width;
-	    var boxY2 = this.Y + this.Height;
-
-	    var insideBoxWidth = Main.MX > this.X && Main.MX < boxX2;
-	    var insideBoxHeight = Main.MY > this.Y && Main.MY < boxY2;
-	    return insideBoxWidth && insideBoxHeight;
+	this.setPic = function(img)
+	{
+	    this.Pic.src = img;
 	}
 
     ////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
 	this.DrawAsImage = function()
 	{
 		Main.Context.drawImage(this.Pic, this.X, this.Y, this.Width, this.Height);
@@ -123,37 +126,32 @@ Main.Animate = function()
 	Main.Context.font = "30px Arial";
 	Main.Context.fillText("Gabby's Senior Pics 2017", Main.Canvas.width/3, 50);
 
-    // check if img selected and if moved left or right from selection
-	var x2 = 0;
-	for (var i=0; i < Main.Boxes.length; i++)
-	{
-	    
-   	    x2 = Main.Boxes[i].X + Main.Boxes[i].Width;
-   	    if (Main.CarouselIsSelected && Main.MX < Main.Boxes[i].X)
-   	        Main.ShiftImagesLeft();
-   	    else if (Main.CarouselIsSelected && (Main.MX > x2))    
-   	        Main.ShiftImagesRight();
-   	    Main.Boxes[i].DrawAsImage(Main.Boxes[i].Pic);
+	for (var i = 0; i < Main.Boxes.length; i++)
+	{	    
+	    Main.Boxes[i].DrawAsImage(Main.Boxes[i].Pic.src);
 	}
 	requestAnimFrame(function() { Main.Animate(); });
 }
 Main.ShiftImagesLeft=function()
 {
-  //  alert("in shift left");
+    var j = 0;
     var tempPic = Main.Boxes[0].Pic.src;
- //   alert('temp pic src:' + tempPic);
-        for (var i = 0; i< Main.Boxes.length-1; i++)
-            Main.Boxes[i].Pic.src = Main.Boxes[i + 1].Pic.src;
-        Main.Boxes[Main.Boxes.length-1].Pic.src = tempPic;
+    for (var i = 1; i < (Main.Boxes.length-1); i++, j++)
+    {
+        Main.Boxes[j].setPic(Main.Boxes[i].Pic.src);
+    }
+    j = Main.Boxes.length-1;
+    Main.Boxes[j].setPic(tempPic);
 }
 Main.ShiftImagesRight = function()
 {
-      //  alert('in shift right');
+        j = 0;
         var tempPic = Main.Boxes[Main.Boxes.length-1].Pic.src;
- //       alert('temp pic src:' + tempPic);
-        for (var i = Main.Boxes.length - 2; i > 0; i--)
-            Main.Boxes[i+1].Pic.src = Main.Boxes[i].Pic.src;
-        Main.Boxes[0].Pic.src = tempPic;
+        for (var i = 1; i< Main.Boxes.length-1; i++, j++)
+        { 
+            Main.Boxes[i].setPic(Main.Boxes[j].Pic.src);
+        }
+        Main.Boxes[0].setPic(tempPic);
 }
 window.requestAnimFrame = (function(callback)
 {
