@@ -40,3 +40,10 @@ C:\Users\Lou\Documents\Lauren\TRI-C CLASSES\2320 INTERNET\Donnie GitHub\IT-2320-
 C:\Users\Lou\Documents\Lauren\TRI-C CLASSES\2320 INTERNET\Donnie GitHub\IT-2320-master\Week 10 - Final Project\FinalProject\obj\Debug\FinalProject.dll
 C:\Users\Lou\Documents\Lauren\TRI-C CLASSES\2320 INTERNET\Donnie GitHub\IT-2320-master\Week 10 - Final Project\FinalProject\obj\Debug\FinalProject.pdb
 C:\Users\Lou\Documents\Lauren\TRI-C CLASSES\2320 INTERNET\Donnie GitHub\IT-2320-master\Week 10 - Final Project\FinalProject\obj\Debug\FinalProject.csprojResolveAssemblyReference.cache
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\bin\FinalProject.dll.config
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\bin\FinalProject.dll
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\bin\FinalProject.pdb
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\obj\Debug\FinalProject.csprojResolveAssemblyReference.cache
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\obj\Debug\FinalProject.dll
+C:\Users\Lou\Documents\GitHub\IT-2320\Assignment7\Week 10 - Final Project\FinalProject\obj\Debug\FinalProject.pdb

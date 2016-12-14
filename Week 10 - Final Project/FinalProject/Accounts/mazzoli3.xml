@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<account>
+  <username>mazzoli3</username>
+  <password>123456</password>
+  <emailadd>mazzolil </emailadd>
+  <GPA>3.5</GPA>
+  <Advisor>Putt</Advisor>
+  <Major>IT Dev/Prog</Major>
+  <Program>Certificate</Program>
+  <anotherone>test values</anotherone>
+  <address>1234 S Main Street, The Land</address>
+  <abcd>1234</abcd>
+  <newone />
+  <hiya>1234</hiya>
+</account>
